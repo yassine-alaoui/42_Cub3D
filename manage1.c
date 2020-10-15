@@ -6,7 +6,7 @@
 /*   By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/12 15:29:30 by yaalaoui          #+#    #+#             */
-/*   Updated: 2020/03/10 17:31:21 by yaalaoui         ###   ########.fr       */
+/*   Updated: 2020/10/14 17:26:10 by yaalaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,8 @@ void	ft_ceeling(t_mapdata *map, char *line)
 		{
 			C[j] = ft_atoi(line + i);
 			i += ft_intlen(C[j] + 1);
-			(C[j] >= 0 && C[j] <= 255) ? ft_chexa(C[j], map) : ft_error("too big of a  num");
+			(C[j] >= 0 && C[j] <= 255) ? ft_chexa(C[j], map)
+				: ft_error("too big of a  num");
 			j++;
 		}
 	}

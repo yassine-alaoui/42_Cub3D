@@ -6,7 +6,7 @@
 /*   By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/12 21:33:27 by yaalaoui          #+#    #+#             */
-/*   Updated: 2020/03/11 13:40:09 by yaalaoui         ###   ########.fr       */
+/*   Updated: 2020/10/14 19:10:33 by yaalaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void	treatthatmap(t_mapdata *map)
 				|| MAP2D[i][j] == 'E' || MAP2D[i][j] == 'S') && p == 0)
 			{
 				p = 1;
-				(PX = (j * 32)) && (PY += (i * 32));
+				(PX = (j * g_tiles)) && (PY += (i * g_tiles));
 			}
 			else if ((MAP2D[i][j] == 'N' || MAP2D[i][j] == 'W'
 				|| MAP2D[i][j] == 'E' || MAP2D[i][j] == 'S') && p == 1)
@@ -97,6 +97,5 @@ void	treatthatmap(t_mapdata *map)
 				ft_error("wrong character");
 		}
 	}
-	if (p == 0)
-		ft_error("there's no player");
+	(p == 0) ? ft_error("there's no player") : 0;
 }

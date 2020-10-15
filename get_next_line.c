@@ -6,7 +6,7 @@
 /*   By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 20:04:59 by yaalaoui          #+#    #+#             */
-/*   Updated: 2020/03/12 18:23:42 by yaalaoui         ###   ########.fr       */
+/*   Updated: 2020/10/14 19:07:22 by yaalaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,10 +90,10 @@ void	ft_drawline(t_mapdata *map, float raylength, t_horizontal *it)
 	int	j;
 
 	j = 0;
-	while(j <= raylength)
+	while (j <= raylength)
 	{
-		DATA[(int)(PY + sin(ARC) * j) * WH
-		+ (int)(PX + cos(ARC) * j)] = 0xff0000;
+		DATA[(int)(PY + sin(ARC) * j) *
+			WH + (int)(PX + cos(ARC) * j)] = 0xff0000;
 		j++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 00:32:04 by yaalaoui          #+#    #+#             */
-/*   Updated: 2020/03/10 23:01:09 by yaalaoui         ###   ########.fr       */
+/*   Updated: 2020/10/14 18:20:30 by yaalaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,18 +67,6 @@ typedef struct	s_lst
 	void			*content;
 	struct s_lst	*next;
 }				t_list;
-
-// typedef struct	s_lista
-// {
-// 	float faceup;
-// 	float faceleft;
-// 	float faceright;
-// 	float facedown;
-// 	float y;
-// 	float dy;
-// 	float x;
-// 	float dx;
-// }				t_horizontal;
 
 # define WH map->width
 # define HT map->height
