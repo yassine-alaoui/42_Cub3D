@@ -1,69 +1,55 @@
-#include "ray.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   buildwall.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/10/15 16:26:44 by yaalaoui          #+#    #+#             */
+/*   Updated: 2020/10/16 11:45:59 by yaalaoui         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lib.h"
+#include "ray.h"
 
-static void	render_wall(t_info *info, int x, int bot, int top)
+static int	color(t_horizontal *it)
 {
-	float	texture_x;
-	float	texture_y;
-	int		y;
-	int		wall_face;
+	if (FCEUP && HH)
+		return (0xff00ff);
+	if (FCELEFT && HV)
+		return (0xffff00);
+	if (FCEDOWN && HH)
+		return (0xfffff0);
+	if (FCERIGHT && HV)
+		return (0xf0ffff);
+	return (0);
+}
 
-	if (info->ray[x].is_vert)
+static void	render_wall(t_mapdata *map, double stripheight,
+	int b, t_horizontal *it)
+{
+	int			i;
+	int			wall;
+
+	wall = (int)stripheight;
+	i = (HT / 2) - (wall / 2);
+	while (i < (HT / 2) + (wall / 2))
 	{
-		texture_x = info->ray[x].wall_y - (int)info->ray[x].wall_y;
-		texture_x *= TEXTURE_SIZE;
-		wall_face = info->ray[x].face_lr;
-	}
-	else
-	{
-		texture_x = info->ray[x].wall_x - (int)info->ray[x].wall_x;
-		texture_x *= TEXTURE_SIZE;
-		wall_face = info->ray[x].face_ud;
-	}
-	y = top - 1;
-	while (++y < bot)
-	{
-		texture_y = (y + (info->ray[x].stip_height / 2) - (info->res_y / 2))
-		* ((float)TEXTURE_SIZE / info->ray[x].stip_height);
-		info->img.data[y * info->res_x + x] =
-		info->tex[wall_face].tex[(int)texture_x][(int)texture_y];
+		if (i >= 0 && i < HT && b >= 0 && b > WH)
+			DATA[i * WH + b] = color(it);
+		i++;
 	}
 }
 
-static void	render_ceiling(t_info *info, int x, int top)
+void		generete_wall(t_mapdata *map, t_horizontal *it, int b)
 {
-	while (top >= 0)
-	{
-		info->img.data[top * info->res_x + x] = info->c;
-		top--;
-	}
-}
+	double		prjplane;
+	double		dist;
+	double		stripheight;
 
-static void	render_floor(t_info *info, int x, int bot)
-{
-	while (bot < info->res_y)
-	{
-		info->img.data[bot * info->res_x + x] = info->f;
-		bot++;
-	}
-}
-
-void		generete_wall(t_mapdata *map, t_horizontal *it, double theone)
-{
-	int		i;
-	int		top_pix;
-	int		bot_pix;
-	int		stripheight;
-	float	per_dist;
-
-	i = -1;
-	per_dist = theone * cos(ARC - ANGLE;
-	stripheight = (g_tiles / per_dist) * ((info->res_x / 2) / (tan(info->fov / 2)));
-	top_pix = (info->res_y / 2) - (info->ray[i].stip_height / 2);
-	top_pix = (top_pix < 0) ? 0 : top_pix;
-	bot_pix = (info->res_y / 2) + (info->ray[i].stip_height / 2);
-	bot_pix = (bot_pix > info->res_y) ? info->res_y : bot_pix;
-	render_ceiling(info, i, top_pix);
-	render_floor(info, i, bot_pix);
-	render_wall(info, i, bot_pix, top_pix);
+	dist = colmdist(map, it) * cos(ARC - ANGLE);
+	prjplane = (WH / 2) / tan(M_PI / 6);
+	stripheight = (32 / dist) * prjplane;
+	render_wall(map, stripheight, b, it);
 }

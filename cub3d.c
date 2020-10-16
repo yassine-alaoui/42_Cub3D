@@ -6,7 +6,7 @@
 /*   By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 00:14:47 by yaalaoui          #+#    #+#             */
-/*   Updated: 2020/03/11 13:37:39 by yaalaoui         ###   ########.fr       */
+/*   Updated: 2020/10/15 18:45:14 by yaalaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	ft_init(t_mapdata *map)
 	map->wdis = 2;
 	map->dwdx = sin(ANGLE) * map->wdis;
 	map->dwdy = cos(ANGLE) * map->wdis;
-	map->drota = 1 * (M_PI / 180);
+	map->drota = 2 * (M_PI / 180);
 }
 
 void	ft_read(int fd, t_mapdata *map)
