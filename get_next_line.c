@@ -6,7 +6,7 @@
 /*   By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 20:04:59 by yaalaoui          #+#    #+#             */
-/*   Updated: 2020/10/16 11:22:17 by yaalaoui         ###   ########.fr       */
+/*   Updated: 2020/10/16 19:22:17 by yaalaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,8 +92,10 @@ void	ft_drawline(t_mapdata *map, float raylength, t_horizontal *it)
 	j = 0;
 	while (j <= raylength)
 	{
-		DATA[(int)(PY + sin(ARC) * j) *
-			WH + (int)(PX + cos(ARC) * j)] = 0xff0000;
+		if (HV)
+			DATA[(int)(PY + sin(ARC) * j) * WH + (int)(PX + cos(ARC) * j)] = 0xff0000;
+		else if (HH)
+			DATA[(int)(PY + sin(ARC) * j) * WH + (int)(PX + cos(ARC) * j)] = 0x00ff00;
 		j++;
 	}
 }
@@ -108,18 +110,19 @@ void	ft_drawaplayer(t_mapdata *map)
 	init(it);
 	i = 0;
 	ft_lstadd_front(&g_mylist, ft_lstnew(it));
-	ARC = ANGLE - (M_PI / 6);
+	ARC = ANGLE;
 	DATA[(int)(PY) * WH + (int)(PX)] = 0x00ff00;
-	while (i < WH)
-	{
+	// while (i < WH)
+	// {
 		if (ARC < 0)
 			ARC += 2 * M_PI;
 		if (ARC > M_PI * 2)
 			ARC -= (M_PI * 2);
+		// generete_wall(map, it, i);
 		theone = colmdist(map, it);
-		generete_wall(map, it, i);
+		printf("%f\n", theone);
 		ft_drawline(map, theone, it);
-		ARC += (M_PI / 3) / WH;
-		i++;
-	}
+	// 	ARC += (M_PI / 3) / WH;
+	// 	i++;
+	// }
 }

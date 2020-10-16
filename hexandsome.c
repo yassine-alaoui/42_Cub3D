@@ -6,7 +6,7 @@
 /*   By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/10 15:51:47 by yaalaoui          #+#    #+#             */
-/*   Updated: 2020/10/16 10:41:34 by yaalaoui         ###   ########.fr       */
+/*   Updated: 2020/10/16 16:51:11 by yaalaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ double		colmdist(t_mapdata *map, t_horizontal *it)
 	double vdist;
 
 	rayfacing(it);
+	dist = 0;
 	hdist = ft_horizontal(map, it);
 	vdist = ft_vertical(map, it);
 	if (hdist < vdist)

@@ -6,25 +6,25 @@
 /*   By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 16:26:44 by yaalaoui          #+#    #+#             */
-/*   Updated: 2020/10/16 11:45:59 by yaalaoui         ###   ########.fr       */
+/*   Updated: 2020/10/16 17:32:16 by yaalaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib.h"
 #include "ray.h"
 
-static int	color(t_horizontal *it)
-{
-	if (FCEUP && HH)
-		return (0xff00ff);
-	if (FCELEFT && HV)
-		return (0xffff00);
-	if (FCEDOWN && HH)
-		return (0xfffff0);
-	if (FCERIGHT && HV)
-		return (0xf0ffff);
-	return (0);
-}
+// static int	color(t_horizontal *it)
+// {
+// 	if (FCEUP && HH)
+// 		return (0xff00ff);
+// 	if (FCELEFT && HV)
+// 		return (0xffff00);
+// 	if (FCEDOWN && HH)
+// 		return (0xfffff0);
+// 	if (FCERIGHT && HV)
+// 		return (0xf0ffff);
+// 	return (0);
+// }
 
 static void	render_wall(t_mapdata *map, double stripheight,
 	int b, t_horizontal *it)
@@ -33,11 +33,14 @@ static void	render_wall(t_mapdata *map, double stripheight,
 	int			wall;
 
 	wall = (int)stripheight;
+	(void)it;
 	i = (HT / 2) - (wall / 2);
 	while (i < (HT / 2) + (wall / 2))
 	{
-		if (i >= 0 && i < HT && b >= 0 && b > WH)
-			DATA[i * WH + b] = color(it);
+		if (i >= 0 && i < HT && b >= 0 && b < WH && HV)
+			DATA[i * WH + b] = 0xffffff;
+		if (i >= 0 && i < HT && b >= 0 && b < WH && HH)
+			DATA[i * WH + b] = 0xb2b2b2;
 		i++;
 	}
 }

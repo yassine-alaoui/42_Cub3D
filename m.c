@@ -6,7 +6,7 @@
 /*   By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/12 20:02:34 by yaalaoui          #+#    #+#             */
-/*   Updated: 2020/10/15 17:03:26 by yaalaoui         ###   ########.fr       */
+/*   Updated: 2020/10/16 16:50:23 by yaalaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	main(/*int argc, char **argv*/)
 	int			fd;
 	t_mapdata	*map;
 
-	g_tiles = 32 * 0.4;
+	g_tiles = 32;
 	if (!(map = malloc(sizeof(t_mapdata))))
 		ft_error("can't be allocated");
 	ft_init(map);

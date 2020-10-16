@@ -6,7 +6,7 @@
 /*   By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 17:33:00 by yaalaoui          #+#    #+#             */
-/*   Updated: 2020/10/14 19:16:14 by yaalaoui         ###   ########.fr       */
+/*   Updated: 2020/10/16 19:23:36 by yaalaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int		iswall(double x, double y, t_mapdata *map)
 	mapx = floor(x / (double)g_tiles);
 	mapy = floor(y / (double)g_tiles);
 	if (mapx >= 0 && mapx < PP && mapy >= 0 && mapy < g_rows)
-		return ((MAP2D[mapy][mapx] == '1'));
+		return ((MAP2D[mapy][mapx] == '1') || (MAP2D[mapy][mapx] == 'S'));
 	return (0);
 }
 
@@ -44,7 +44,7 @@ double	ft_horizontal(t_mapdata *map, t_horizontal *it)
 	double	ay;
 	double	xstep;
 	double	ystep;
-	int		h;
+	double	h;
 
 	h = 0;
 	ay = floor(PY / g_tiles) * g_tiles + (g_tiles * FCEDOWN);
@@ -71,7 +71,7 @@ double	ft_vertical(t_mapdata *map, t_horizontal *it)
 	double	ay;
 	double	xstep;
 	double	ystep;
-	int		hu;
+	double	hu;
 
 	hu = 0;
 	ax = floor(PX / g_tiles) * g_tiles + (g_tiles * FCERIGHT);
