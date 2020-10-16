@@ -121,7 +121,7 @@ void	ft_helpdrawasquare(t_mapdata *map)
 		j = 0;
 		while (j < (int)ft_strlen(MAP2D[i]))
 		{
-			(MAP2D[i][j] == '1') ? ft_drawasquare(x, y, map) : 0;
+			// (MAP2D[i][j] == '1') ? ft_drawasquare(x, y, map) : 0;
 			x += g_tiles;
 			j++;
 		}

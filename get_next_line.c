@@ -110,19 +110,18 @@ void	ft_drawaplayer(t_mapdata *map)
 	init(it);
 	i = 0;
 	ft_lstadd_front(&g_mylist, ft_lstnew(it));
-	ARC = ANGLE;
-	DATA[(int)(PY) * WH + (int)(PX)] = 0x00ff00;
-	// while (i < WH)
-	// {
+	ARC = ANGLE - (M_PI / 6);
+	// DATA[(int)(PY) * WH + (int)(PX)] = 0x00ff00;
+	while (i < WH)
+	{
 		if (ARC < 0)
 			ARC += 2 * M_PI;
 		if (ARC > M_PI * 2)
 			ARC -= (M_PI * 2);
-		// generete_wall(map, it, i);
+		generete_wall(map, it, i);
 		theone = colmdist(map, it);
-		printf("%f\n", theone);
-		ft_drawline(map, theone, it);
-	// 	ARC += (M_PI / 3) / WH;
-	// 	i++;
-	// }
+		// ft_drawline(map, theone, it);
+		ARC += (M_PI / 3) / WH;
+		i++;
+	}
 }

@@ -44,6 +44,8 @@ double		colmdist(t_mapdata *map, t_horizontal *it)
 	double vdist;
 
 	rayfacing(it);
+	HH = 0;
+	HV = 0;
 	dist = 0;
 	hdist = ft_horizontal(map, it);
 	vdist = ft_vertical(map, it);
