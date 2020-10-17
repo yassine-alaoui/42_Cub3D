@@ -6,18 +6,33 @@
 /*   By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/12 20:02:34 by yaalaoui          #+#    #+#             */
-/*   Updated: 2020/10/16 16:50:23 by yaalaoui         ###   ########.fr       */
+/*   Updated: 2020/10/17 18:50:25 by yaalaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib.h"
+#include "ray.h"
 
-int	main(/*int argc, char **argv*/)
+void	init(t_horizontal *it)
+{
+	it->dx = 0;
+	it->x = 0;
+	it->wallx = 0;
+	it->dy = 0;
+	it->y = 0;
+	it->wally = 0;
+	it->facedown = 0;
+	it->faceup = 0;
+	it->faceleft = 0;
+	it->faceright = 0;
+}
+
+int		main(/*int argc, char **argv*/)
 {
 	int			fd;
 	t_mapdata	*map;
 
-	g_tiles = 32;
+	g_tiles = 64;
 	if (!(map = malloc(sizeof(t_mapdata))))
 		ft_error("can't be allocated");
 	ft_init(map);

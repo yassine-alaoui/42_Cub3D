@@ -6,7 +6,7 @@
 /*   By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/12 15:29:30 by yaalaoui          #+#    #+#             */
-/*   Updated: 2020/10/14 17:26:10 by yaalaoui         ###   ########.fr       */
+/*   Updated: 2020/10/17 18:50:38 by yaalaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,12 @@ void	ft_floor(t_mapdata *map, char *line)
 		{
 			F[j] = ft_atoi(line + i);
 			i += ft_intlen(F[j] + 1);
-			ft_fhexa(F[j], map);
+			(F[j] >= 0 && F[j] <= 255) ? ft_fhexa(F[j], map)
+				: ft_error("it's the wrong number");
 			j++;
 		}
 	}
+	hexf(map);
 	if (j != 3)
 		ft_error("not a valid color");
 }
@@ -86,10 +88,11 @@ void	ft_ceeling(t_mapdata *map, char *line)
 			C[j] = ft_atoi(line + i);
 			i += ft_intlen(C[j] + 1);
 			(C[j] >= 0 && C[j] <= 255) ? ft_chexa(C[j], map)
-				: ft_error("too big of a  num");
+				: ft_error("it's the wrong number");
 			j++;
 		}
 	}
+	hexc(map);
 	if (j != 3)
 		ft_error("not a valid color");
 }

@@ -6,7 +6,7 @@
 /*   By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/23 03:54:40 by yaalaoui          #+#    #+#             */
-/*   Updated: 2020/10/16 14:20:13 by yaalaoui         ###   ########.fr       */
+/*   Updated: 2020/10/17 20:13:58 by yaalaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,8 @@ int		loop_me(t_mapdata *map)
 	{
 		ANGLE = fmod(ANGLE, M_PI * 2);
 		(ANGLE < 0) ? ANGLE += M_PI * 2 : 0;
-		(KEY_0 == LEFT) ? ANGLE = ANGLE - DRT : 0;
-		(KEY_0 == RIGHT) ? ANGLE = ANGLE + DRT : 0;
+		(KEY_0 == LEFT) ? ANGLE = ANGLE + DRT : 0;
+		(KEY_0 == RIGHT) ? ANGLE = ANGLE - DRT : 0;
 	}
 	DWX = cos(ANGLE) * DWD * (KEY_1 == DOWN ? -1 : 1);
 	DWY = sin(ANGLE) * DWD * (KEY_1 == DOWN ? -1 : 1);
@@ -83,6 +83,7 @@ int		loop_me(t_mapdata *map)
 		(PX += DWX);
 		(PY += DWY);
 	}
+	mlx_clear_window(MLX, g_mlx_win);
 	mlx_destroy_image(MLX, IMAGE);
 	IMAGE = mlx_new_image(MLX, WH, HT);
 	DATA = (int *)mlx_get_data_addr(IMAGE, &SIZELINE, &ENDIAN, &ENDIAN);

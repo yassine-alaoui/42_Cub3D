@@ -6,7 +6,7 @@
 /*   By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/10 15:51:47 by yaalaoui          #+#    #+#             */
-/*   Updated: 2020/10/16 16:51:11 by yaalaoui         ###   ########.fr       */
+/*   Updated: 2020/10/17 18:20:26 by yaalaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,52 @@ void		ft_chexa(int nb, t_mapdata *map)
 	i++;
 }
 
+void		hexf(t_mapdata *map)
+{
+	int		i;
+	int		b;
+	char	*a;
+	int		num;
+
+	i = 0;
+	a = 0;
+	b = 0;
+	while (FLOOR[i])
+	{
+		if (FLOOR[i] >= '0' && FLOOR[i] <= '9')
+			num = FLOOR[i] - '0';
+		if (FLOOR[i] >= 'A' && FLOOR[i] <= 'F')
+			num = FLOOR[i] - 'A' + 10;
+		if (FLOOR[i] >= 'a' && FLOOR[i] <= 'f')
+			num = FLOOR[i] - 'a' + 10;
+		HEXF = HEXF * 10 + num;
+		i++;
+	}
+}
+
+void		hexc(t_mapdata *map)
+{
+	int		i;
+	int		b;
+	char	*a;
+	int		num;
+
+	i = 0;
+	a = 0;
+	b = 0;
+	while (CEELING[i])
+	{
+		if (CEELING[i] >= '0' && CEELING[i] <= '9')
+			num = CEELING[i] - '0';
+		if (CEELING[i] >= 'A' && CEELING[i] <= 'F')
+			num = CEELING[i] - 'A' + 10;
+		if (CEELING[i] >= 'a' && CEELING[i] <= 'f')
+			num = CEELING[i] - 'a' + 10;
+		HEXC = HEXC * 10 + num;
+		i++;
+	}
+}
+
 double		colmdist(t_mapdata *map, t_horizontal *it)
 {
 	double dist;
@@ -64,18 +110,4 @@ double		colmdist(t_mapdata *map, t_horizontal *it)
 		HV = 1;
 	}
 	return (dist);
-}
-
-void		init(t_horizontal *it)
-{
-	it->dx = 0;
-	it->x = 0;
-	it->wallx = 0;
-	it->dy = 0;
-	it->y = 0;
-	it->wally = 0;
-	it->facedown = 0;
-	it->faceup = 0;
-	it->faceleft = 0;
-	it->faceright = 0;
 }

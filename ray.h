@@ -6,7 +6,7 @@
 /*   By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 18:18:10 by yaalaoui          #+#    #+#             */
-/*   Updated: 2020/10/16 10:45:08 by yaalaoui         ###   ########.fr       */
+/*   Updated: 2020/10/17 20:20:07 by yaalaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,14 @@ typedef struct	s_lista
 	double	faceright;
 	double	faceleft;
 	double	arc;
-	double	hitv;
-	double	hith;
-	double	wallx;
-	double	wallvx;
-	double	wallhx;
-	double	wally;
-	double	wallvy;
-	double	wallhy;
+	int		hitv;
+	int		hith;
+	int		wallx;
+	int		wallvx;
+	int		wallhx;
+	int		wally;
+	int		wallvy;
+	int		wallhy;
 }				t_horizontal;
 
 # define FCEUP it->faceup

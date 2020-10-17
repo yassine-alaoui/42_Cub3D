@@ -6,7 +6,7 @@
 /*   By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 00:32:04 by yaalaoui          #+#    #+#             */
-/*   Updated: 2020/10/16 12:29:01 by yaalaoui         ###   ########.fr       */
+/*   Updated: 2020/10/17 20:34:22 by yaalaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,10 @@ typedef struct	s_list
 	int		lol;
 	int		endian;
 	int		*mlxdata;
+	int		nhexfloor;
+	int		nhexceeling;
 	int		pp;
+	unsigned int		*wall_texture;
 	float	playerx;
 	float	playery;
 	float	wdis;
@@ -52,8 +55,8 @@ typedef struct	s_list
 	void	*mlximage;
 	void	*mlx;
 	char	*maponestr;
-	char	hexfloor[6];
-	char	hexceeling[6];
+	char	hexfloor[8];
+	char	hexceeling[8];
 	char	*north;
 	char	*south;
 	char	*west;
@@ -98,12 +101,15 @@ typedef struct	s_lst
 # define RIGHT 123
 # define UP 13
 # define DOWN 1
+# define TEXTURE map->wall_texture
 # define DRT map->drota
 # define DWX map->dwdx
 # define DWY map->dwdy
 # define DWD map->wdis
 # define VIEW map->view
 # define CEELING map->hexceeling
+# define HEXC map->nhexceeling
+# define HEXF map->nhexfloor
 # define FLOOR map->hexfloor
 
 # define RAD(x) ((x * 2 * M_PI) / 360)
@@ -132,6 +138,8 @@ void			ft_drawaplayer(t_mapdata *map);
 void			ft_helpdrawasquare2(t_mapdata *map);
 void			ft_fhexa(int nb, t_mapdata *map);
 void			ft_chexa(int nb, t_mapdata *map);
+void			hexf(t_mapdata *map);
+void			hexc(t_mapdata *map);
 void			*g_mlx_win;
 int				loop_me(t_mapdata *map);
 int				ft_fill(char **last, int fd);
