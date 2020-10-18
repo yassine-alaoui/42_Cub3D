@@ -6,11 +6,12 @@
 /*   By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 00:14:47 by yaalaoui          #+#    #+#             */
-/*   Updated: 2020/10/17 17:38:44 by yaalaoui         ###   ########.fr       */
+/*   Updated: 2020/10/18 17:33:16 by yaalaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib.h"
+#include "ray.h"
 
 int		ft_atoi(const char *str)
 {
@@ -60,7 +61,7 @@ void	ft_init(t_mapdata *map)
 	KEY_S0 = 0;
 	LOL = 0;
 	PP = 0;
-	map->wdis = 6;
+	map->wdis = 2;
 	map->dwdx = sin(ANGLE) * map->wdis;
 	map->dwdy = cos(ANGLE) * map->wdis;
 	map->drota = 2 * (M_PI / 180);
@@ -121,7 +122,7 @@ void	ft_helpdrawasquare(t_mapdata *map)
 		j = 0;
 		while (j < (int)ft_strlen(MAP2D[i]))
 		{
-			// (MAP2D[i][j] == '1') ? ft_drawasquare(x, y, map) : 0;
+			(MAP2D[i][j] == '1') ? ft_drawasquare(x, y, map) : 0;
 			x += g_tiles;
 			j++;
 		}

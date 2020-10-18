@@ -6,7 +6,7 @@
 /*   By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 00:32:04 by yaalaoui          #+#    #+#             */
-/*   Updated: 2020/10/17 20:34:22 by yaalaoui         ###   ########.fr       */
+/*   Updated: 2020/10/18 17:40:20 by yaalaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,10 @@ typedef struct	s_list
 	int		nhexfloor;
 	int		nhexceeling;
 	int		pp;
-	unsigned int		*wall_texture;
+	int		up;
+	int		down;
+	int		right;
+	int		left;
 	float	playerx;
 	float	playery;
 	float	wdis;
@@ -101,7 +104,6 @@ typedef struct	s_lst
 # define RIGHT 123
 # define UP 13
 # define DOWN 1
-# define TEXTURE map->wall_texture
 # define DRT map->drota
 # define DWX map->dwdx
 # define DWY map->dwdy
@@ -111,6 +113,10 @@ typedef struct	s_lst
 # define HEXC map->nhexceeling
 # define HEXF map->nhexfloor
 # define FLOOR map->hexfloor
+# define FUP map->up
+# define FDOWN map->down
+# define FRIGHT map->right
+# define FLEFT map->left
 
 # define RAD(x) ((x * 2 * M_PI) / 360)
 
@@ -126,7 +132,6 @@ void			ft_sprite(t_mapdata *map, char *line);
 void			ft_floor(t_mapdata *map, char *line);
 void			ft_ceeling(t_mapdata *map, char *line);
 void			ft_fetch(char *line, int *height, int *width, t_mapdata *map);
-void			ft_helpdrawasquare(t_mapdata *map);
 void			ft_drawasquare(int a, int b, t_mapdata *map);
 void			ft_lstadd_front(t_list **alst, t_list *new);
 void			ft_lstclear(t_list **lst);
@@ -134,7 +139,6 @@ void			ft_matrix(t_mapdata *map, char *line);
 void			ft_joindouble(t_mapdata *map);
 void			treatthatmap(t_mapdata *map);
 void			ft_read(int fd, t_mapdata *map);
-void			ft_drawaplayer(t_mapdata *map);
 void			ft_helpdrawasquare2(t_mapdata *map);
 void			ft_fhexa(int nb, t_mapdata *map);
 void			ft_chexa(int nb, t_mapdata *map);

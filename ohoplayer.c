@@ -6,11 +6,12 @@
 /*   By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/23 03:54:40 by yaalaoui          #+#    #+#             */
-/*   Updated: 2020/10/17 20:13:58 by yaalaoui         ###   ########.fr       */
+/*   Updated: 2020/10/18 18:56:06 by yaalaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib.h"
+#include "ray.h"
 
 int		ft_quit()
 {
@@ -34,12 +35,18 @@ int		key_pressed(int key, t_mapdata *map)
 {
 	if (key == LEFT || key == RIGHT)
 	{
-		KEY_0 = key;
+		if (key == LEFT)
+			KEY_0 = 1;
+		if (key == RIGHT)
+			KEY_0 = -1;
 		KEY_S0 = 1;
 	}
 	if (key == DOWN || key == UP)
 	{
-		KEY_1 = key;
+		if (key == DOWN)
+			KEY_1 = -1;
+		if (key == UP)
+			KEY_1 = 1;
 		KEY_S1 = 1;
 	}
 	return (0);
@@ -49,17 +56,12 @@ int		ft_iswall(t_mapdata *map)
 {
 	int newx;
 	int newy;
-	int newbx;
-	int newby;
 
 	if (PX < 0 || PY < 0)
 		return (1);
-	newy = floor((DWY + PY) / g_tiles);
-	newx = floor((DWX + PX) / g_tiles);
-	newby = floor((DWY + PY) / g_tiles);
-	newbx = floor((DWX + PX) / g_tiles);
-	if (MAP2D[newy][newx] == '1' || MAP2D[newy][newbx] == '1'
-		|| MAP2D[newby][newx] == '1' || MAP2D[newby][newbx] == '1')
+	newy = floor((DWY + PY - 1) / g_tiles);
+	newx = floor((DWX + PX - 1) / g_tiles);
+	if (MAP2D[newy][newx] == '1')
 		return (1);
 	return (0);
 }
@@ -69,24 +71,21 @@ int		loop_me(t_mapdata *map)
 	mlx_hook(g_mlx_win, 2, 0, &key_pressed, map);
 	mlx_hook(g_mlx_win, 3, 0, &key_released, map);
 	mlx_hook(g_mlx_win, 17, 0, &ft_quit, map);
-	if (KEY_S0)
+	ANGLE = fmod(ANGLE, 2 * M_PI);
+	if (ANGLE < 0)
+		ANGLE += 2 * M_PI;
+	if (KEY_S0 == 1)
+		ANGLE = ANGLE + ((KEY_0) * 0.03);
+	if (MAP2D[(int)(PY + (KEY_1 * sin(ANGLE) * 8)) / (32)]
+		[(int)(PX + (KEY_1 * cos(ANGLE) * 8)) / (32)] != '1' && KEY_S1 == 1)
 	{
-		ANGLE = fmod(ANGLE, M_PI * 2);
-		(ANGLE < 0) ? ANGLE += M_PI * 2 : 0;
-		(KEY_0 == LEFT) ? ANGLE = ANGLE + DRT : 0;
-		(KEY_0 == RIGHT) ? ANGLE = ANGLE - DRT : 0;
-	}
-	DWX = cos(ANGLE) * DWD * (KEY_1 == DOWN ? -1 : 1);
-	DWY = sin(ANGLE) * DWD * (KEY_1 == DOWN ? -1 : 1);
-	if (KEY_S1 && !ft_iswall(map))
-	{
-		(PX += DWX);
-		(PY += DWY);
+		PX = PX + (KEY_1 * cos(ANGLE) * 1);
+		PY = PY + (KEY_1 * sin(ANGLE) * 1);
 	}
 	mlx_clear_window(MLX, g_mlx_win);
-	mlx_destroy_image(MLX, IMAGE);
-	IMAGE = mlx_new_image(MLX, WH, HT);
-	DATA = (int *)mlx_get_data_addr(IMAGE, &SIZELINE, &ENDIAN, &ENDIAN);
+	// mlx_destroy_image(MLX, IMAGE);
+	// IMAGE = mlx_new_image(MLX, WH, HT);
+	// DATA = (int *)mlx_get_data_addr(IMAGE, &SIZELINE, &ENDIAN, &ENDIAN);
 	ft_helpdrawasquare(map);
 	mlx_put_image_to_window(MLX, g_mlx_win, IMAGE, 0, 0);
 	return (0);

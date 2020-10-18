@@ -6,7 +6,7 @@
 /*   By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/10 15:51:47 by yaalaoui          #+#    #+#             */
-/*   Updated: 2020/10/17 18:20:26 by yaalaoui         ###   ########.fr       */
+/*   Updated: 2020/10/18 19:11:37 by yaalaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,15 +97,15 @@ double		colmdist(t_mapdata *map, t_horizontal *it)
 	vdist = ft_vertical(map, it);
 	if (hdist < vdist)
 	{
-		WALLX = WALLHX;
-		WALLY = WALLHY;
+		// WALLHX = WALLX;
+		// WALLHY = WALLY;
 		dist = hdist;
 		HH = 1;
 	}
 	else
 	{
-		WALLX = WALLVX;
-		WALLY = WALLVY;
+		// WALLVX = WALLX;
+		// WALLVY = WALLY;
 		dist = vdist;
 		HV = 1;
 	}

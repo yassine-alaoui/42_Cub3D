@@ -6,7 +6,7 @@
 /*   By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/12 15:29:30 by yaalaoui          #+#    #+#             */
-/*   Updated: 2020/10/17 18:50:38 by yaalaoui         ###   ########.fr       */
+/*   Updated: 2020/10/18 18:47:12 by yaalaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ void	ft_east(t_mapdata *map, char *line)
 			ft_error("Something is wrong with the path EA");
 		if (line[i] == '.')
 		{
-			EA = ft_substr(line, i, ft_strlen(line + i));
+			EA = ft_substr(line, i, ft_strlen(line));
+			printf("%s", EA);
 			ft_lstadd_front(&g_mylist, ft_lstnew(EA));
 			MCHECK++;
 			break ;
