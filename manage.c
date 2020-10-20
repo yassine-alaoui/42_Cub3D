@@ -6,7 +6,7 @@
 /*   By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 23:00:47 by yaalaoui          #+#    #+#             */
-/*   Updated: 2020/03/05 20:40:51 by yaalaoui         ###   ########.fr       */
+/*   Updated: 2020/10/20 14:31:33 by yaalaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	ft_north(t_mapdata *map, char *line)
 			ft_error("Something is wrong with the path NO");
 		if (line[i] == '.')
 		{
-			NO = ft_substr(line, i, ft_strlen(line + i));
+			NO = ft_substr(line, i, ft_strlen(line));
 			ft_lstadd_front(&g_mylist, ft_lstnew(NO));
 			MCHECK++;
 			break ;
@@ -91,7 +91,7 @@ void	ft_south(t_mapdata *map, char *line)
 			ft_error("Something is wrong with the path SO");
 		if (line[i] == '.')
 		{
-			SO = ft_substr(line, i, ft_strlen(line + i));
+			SO = ft_substr(line, i, ft_strlen(line));
 			ft_lstadd_front(&g_mylist, ft_lstnew(SO));
 			MCHECK++;
 			break ;
@@ -110,7 +110,7 @@ void	ft_west(t_mapdata *map, char *line)
 			ft_error("Something is wrong with the path WE");
 		if (line[i] == '.')
 		{
-			WE = ft_substr(line, i, ft_strlen(line + i));
+			WE = ft_substr(line, i, ft_strlen(line));
 			ft_lstadd_front(&g_mylist, ft_lstnew(WE));
 			MCHECK++;
 			break ;

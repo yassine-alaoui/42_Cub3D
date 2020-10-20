@@ -6,7 +6,7 @@
 /*   By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 16:26:44 by yaalaoui          #+#    #+#             */
-/*   Updated: 2020/10/18 20:48:02 by yaalaoui         ###   ########.fr       */
+/*   Updated: 2020/10/20 14:30:10 by yaalaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,22 +49,20 @@ static void	ft_drawwall(int wall, t_mapdata *map,
 	t_horizontal *it, int b)
 {
 	int	i;
-	// int	texturecol;
 	int	offsetx;
 	int	offsety;
 
 	if (HV)
-		offsetx = WALLY % g_tiles;
+		offsetx = (int)WALLY % g_tiles;
 	else
-		offsetx = WALLX % g_tiles;
-	(void)it;
+		offsetx = (int)WALLX % g_tiles;
 	i = (HT / 2) - (wall / 2);
+	picktxt(it);
 	while (i < (HT / 2) + (wall / 2))
 	{
-		offsety = (i - (HT / 2) - (wall / 2)) * (g_tiles / wall);
-		// texturecol = TEXTURE[(g_tiles * offsety) + offsetx];
+		offsety = (i + (wall / 2) - (HT / 2)) * ((float)g_tiles / wall);
 		if (i >= 0 && i < HT && b >= 0 && b < WH)
-			DATA[i * WH + b] = TXTDATA[offsetx + (g_tiles * offsety)];
+			DATA[i * WH + b] = TXTDATA[TXTNUM][offsetx + (g_tiles * offsety)];
 		i++;
 	}
 }
@@ -74,7 +72,7 @@ static void	render_wall(t_mapdata *map, double stripheight,
 {
 	int	wall;
 
-	wall = (int)stripheight - 5;
+	wall = (int)stripheight;
 	ft_drawwall(wall, map, it, b);
 	ft_drawceeling(wall, it, map, b);
 	ft_drawfloor(wall, it, map, b);

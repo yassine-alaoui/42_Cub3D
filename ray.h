@@ -6,7 +6,7 @@
 /*   By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 18:18:10 by yaalaoui          #+#    #+#             */
-/*   Updated: 2020/10/18 20:42:40 by yaalaoui         ###   ########.fr       */
+/*   Updated: 2020/10/20 14:30:03 by yaalaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,14 @@ typedef struct	s_lista
 	double	arc;
 	int		hitv;
 	int		hith;
-	int		wallx;
-	// int		wallvx;
-	// int		wallhx;
-	int		wally;
-	// int		wallvy;
-	// int		wallhy;
-	int		*texturedata;
+	double	wallx;
+	double	wally;
+	int		wallvy;
+	int		wallvx;
+	int		wallhx;
+	int		wallhy;
+	int		textnum;
+	int		*texturedata[4];
 	void	*textureimage;
 }				t_horizontal;
 
@@ -55,13 +56,14 @@ typedef struct	s_lista
 # define HV it->hitv
 # define TXTIMG it->textureimage
 # define TXTDATA it->texturedata
-# define TEXTURE it->wall_texture
+# define TXTNUM it->textnum
 
 void			init(t_horizontal *it);
 void			ft_facewhere(t_horizontal *it);
 void			generete_wall(t_mapdata *map, t_horizontal *it, int b);
 void			rayfacing(t_horizontal *it);
 void			ft_helpdrawasquare(t_mapdata *map);
+void			picktxt(t_horizontal *it);
 void			ft_drawaplayer(t_mapdata *map);
 void			texture(t_horizontal *it, t_mapdata *map);
 double			ft_horizontal(t_mapdata *map, t_horizontal *it);

@@ -6,7 +6,7 @@
 /*   By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 17:33:00 by yaalaoui          #+#    #+#             */
-/*   Updated: 2020/10/18 17:15:51 by yaalaoui         ###   ########.fr       */
+/*   Updated: 2020/10/20 13:15:44 by yaalaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,8 @@ double	ft_horizontal(t_mapdata *map, t_horizontal *it)
 		ax += xstep;
 		ay += ystep;
 	}
-	WALLX = ax;
-	WALLY = ay;
+	WALLHX = ax;
+	WALLHY = ay;
 	return (sqrtf((ay - PY) * (ay - PY) + (ax - PX) * (ax - PX)));
 }
 
@@ -87,7 +87,7 @@ double	ft_vertical(t_mapdata *map, t_horizontal *it)
 		ax += xstep;
 		ay += ystep;
 	}
-	WALLX = ax;
-	WALLY = ay;
+	WALLVX = ax;
+	WALLVY = ay;
 	return (sqrtf((ay - PY) * (ay - PY) + (ax - PX) * (ax - PX)));
 }

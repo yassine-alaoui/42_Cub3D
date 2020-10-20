@@ -6,7 +6,7 @@
 /*   By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/12 15:29:30 by yaalaoui          #+#    #+#             */
-/*   Updated: 2020/10/18 18:47:12 by yaalaoui         ###   ########.fr       */
+/*   Updated: 2020/10/20 13:26:45 by yaalaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	ft_east(t_mapdata *map, char *line)
 		if (line[i] == '.')
 		{
 			EA = ft_substr(line, i, ft_strlen(line));
-			printf("%s", EA);
 			ft_lstadd_front(&g_mylist, ft_lstnew(EA));
 			MCHECK++;
 			break ;

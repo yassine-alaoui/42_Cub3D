@@ -1,8 +1,8 @@
-R 1280 650
+R 500 500
 
-NO ./path_to_the_north_texture
-SO ./path_to_the_south_texture
-WE ./path_to_the_west_texture
+NO ./textures/grass_wall.xpm
+SO ./textures/natsi_wall.xpm
+WE ./textures/colored_rock.xpm
 EA ./textures/rock.xpm
 S ./path_to_the_sprite_texture
 

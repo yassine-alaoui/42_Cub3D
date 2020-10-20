@@ -6,7 +6,7 @@
 /*   By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 00:14:47 by yaalaoui          #+#    #+#             */
-/*   Updated: 2020/10/18 17:33:16 by yaalaoui         ###   ########.fr       */
+/*   Updated: 2020/10/20 12:59:35 by yaalaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,27 +108,27 @@ void	ft_matrix(t_mapdata *map, char *line)
 
 void	ft_helpdrawasquare(t_mapdata *map)
 {
-	int			j;
-	int			i;
-	int			x;
-	int			y;
+	// int			j;
+	// int			i;
+	// int			x;
+	// int			y;
 
-	x = 0;
-	i = 0;
-	j = 0;
-	y = 0;
-	while (i < g_rows)
-	{
-		j = 0;
-		while (j < (int)ft_strlen(MAP2D[i]))
-		{
-			(MAP2D[i][j] == '1') ? ft_drawasquare(x, y, map) : 0;
-			x += g_tiles;
-			j++;
-		}
-		x = 0;
-		y += g_tiles;
-		i++;
-	}
+	// x = 0;
+	// i = 0;
+	// j = 0;
+	// y = 0;
+	// while (i < g_rows)
+	// {
+	// 	j = 0;
+	// 	while (j < (int)ft_strlen(MAP2D[i]))
+	// 	{
+	// 		(MAP2D[i][j] == '1') ? ft_drawasquare(x, y, map) : 0;
+	// 		x += g_tiles;
+	// 		j++;
+	// 	}
+	// 	x = 0;
+	// 	y += g_tiles;
+	// 	i++;
+	// }
 	ft_drawaplayer(map);
 }
