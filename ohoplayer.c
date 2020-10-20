@@ -6,7 +6,7 @@
 /*   By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/23 03:54:40 by yaalaoui          #+#    #+#             */
-/*   Updated: 2020/10/20 13:28:40 by yaalaoui         ###   ########.fr       */
+/*   Updated: 2020/10/20 20:04:00 by yaalaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,8 @@ int		ft_iswall(t_mapdata *map)
 
 	if (PX < 0 || PY < 0)
 		return (1);
-	newy = floor((DWY + PY - 1) / g_tiles);
-	newx = floor((DWX + PX - 1) / g_tiles);
+	newy = floor((DWY + PY) / g_tiles);
+	newx = floor((DWX + PX) / g_tiles);
 	if (MAP2D[newy][newx] == '1')
 		return (1);
 	return (0);
@@ -80,8 +80,8 @@ int		loop_me(t_mapdata *map)
 		[(int)(PX + (KEY_1 * cos(ANGLE) * 20))
 		/ (g_tiles)] != '1' && KEY_S1 == 1)
 	{
-		PX = PX + (KEY_1 * cos(ANGLE) * (WH / g_tiles / 10));
-		PY = PY + (KEY_1 * sin(ANGLE) * (WH / g_tiles / 10));
+		PX = PX + (KEY_1 * cos(ANGLE) * 1);
+		PY = PY + (KEY_1 * sin(ANGLE) * 1);
 	}
 	// mlx_clear_window(MLX, g_mlx_win);
 	mlx_destroy_image(MLX, IMAGE);

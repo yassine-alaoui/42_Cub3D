@@ -6,7 +6,7 @@
 /*   By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/18 20:40:11 by yaalaoui          #+#    #+#             */
-/*   Updated: 2020/10/20 14:33:48 by yaalaoui         ###   ########.fr       */
+/*   Updated: 2020/10/20 18:15:41 by yaalaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ void	picktxt(t_horizontal *it)
 	if (FCELEFT && HV)
 		TXTNUM = 0;
 	if (FCEDOWN && HH)
-		TXTNUM = 2;
-	if (FCERIGHT && HV)
 		TXTNUM = 1;
+	if (FCERIGHT && HV)
+		TXTNUM = 2;
 }
 
 void	texture(t_horizontal *it, t_mapdata *map)

@@ -6,12 +6,22 @@
 /*   By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/12 20:02:34 by yaalaoui          #+#    #+#             */
-/*   Updated: 2020/10/20 13:51:11 by yaalaoui         ###   ########.fr       */
+/*   Updated: 2020/10/20 20:44:02 by yaalaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib.h"
 #include "ray.h"
+
+void	sean(t_mapdata *map)
+{
+	if (MAP2D[(int)PY / g_tiles][(int)PX / g_tiles] == 'N')
+		ANGLE += 90 * M_PI / 180;
+	if (MAP2D[(int)PY / g_tiles][(int)PX / g_tiles] == 'E')
+		ANGLE += 180 * M_PI / 180;
+	if (MAP2D[(int)PY / g_tiles][(int)PX / g_tiles] == 'S')
+		ANGLE += 270 * M_PI / 180;
+}
 
 void	init(t_horizontal *it)
 {
@@ -44,6 +54,7 @@ int		main(/*int argc, char **argv*/)
 	g_mlx_win = mlx_new_window(MLX, WH, HT, "CUB3D");
 	IMAGE = mlx_new_image(MLX, WH, HT);
 	DATA = (int *)mlx_get_data_addr(IMAGE, &SIZELINE, &ENDIAN, &ENDIAN);
+	sean(map);
 	// if (argc == 2)
 	// {
 		ft_helpdrawasquare(map);

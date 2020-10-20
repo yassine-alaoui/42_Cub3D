@@ -6,7 +6,7 @@
 /*   By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 20:04:59 by yaalaoui          #+#    #+#             */
-/*   Updated: 2020/10/20 13:03:09 by yaalaoui         ###   ########.fr       */
+/*   Updated: 2020/10/20 19:57:43 by yaalaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,10 +73,10 @@ void	ft_drawasquare(int a, int b, t_mapdata *map)
 	int			j;
 
 	i = 0;
-	while (i <= g_tiles)
+	while (i <= 7)
 	{
 		j = 0;
-		while (j <= g_tiles)
+		while (j <= 7)
 		{
 			DATA[(j + b) * WH + (i + a)] = 0x0fffff;
 			j++;
@@ -116,7 +116,7 @@ void	ft_drawaplayer(t_mapdata *map)
 	i = 0;
 	ft_lstadd_front(&g_mylist, ft_lstnew(it));
 	ARC = ANGLE - (M_PI / 6);
-	// DATA[(int)(PY) * WH + (int)(PX)] = 0x00ff00;
+	DATA[(int)(PY) * WH + (int)(PX)] = 0x00ff00;
 	texture(it, map);
 	while (i < WH)
 	{
