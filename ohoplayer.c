@@ -6,7 +6,7 @@
 /*   By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/23 03:54:40 by yaalaoui          #+#    #+#             */
-/*   Updated: 2020/10/20 20:04:00 by yaalaoui         ###   ########.fr       */
+/*   Updated: 2020/10/21 13:05:03 by yaalaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,8 @@ int		loop_me(t_mapdata *map)
 		ANGLE += 2 * M_PI;
 	if (KEY_S0 == 1)
 		ANGLE = ANGLE + ((KEY_0) * 0.06);
-	if (MAP2D[(int)(PY + (KEY_1 * sin(ANGLE) * 20)) / (g_tiles)]
-		[(int)(PX + (KEY_1 * cos(ANGLE) * 20))
+	if (MAP2D[(int)(PY + (KEY_1 * sin(ANGLE) * 10)) / (g_tiles)]
+		[(int)(PX + (KEY_1 * cos(ANGLE) * 10))
 		/ (g_tiles)] != '1' && KEY_S1 == 1)
 	{
 		PX = PX + (KEY_1 * cos(ANGLE) * 1);

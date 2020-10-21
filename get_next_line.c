@@ -6,7 +6,7 @@
 /*   By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 20:04:59 by yaalaoui          #+#    #+#             */
-/*   Updated: 2020/10/20 19:57:43 by yaalaoui         ###   ########.fr       */
+/*   Updated: 2020/10/21 14:04:17 by yaalaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,7 @@ void	ft_drawaplayer(t_mapdata *map)
 	i = 0;
 	ft_lstadd_front(&g_mylist, ft_lstnew(it));
 	ARC = ANGLE - (M_PI / 6);
-	DATA[(int)(PY) * WH + (int)(PX)] = 0x00ff00;
+	// DATA[(int)(PY) * WH + (int)(PX)] = 0x00ff00;
 	texture(it, map);
 	while (i < WH)
 	{
@@ -125,7 +125,7 @@ void	ft_drawaplayer(t_mapdata *map)
 		if (ARC > M_PI * 2)
 			ARC -= (M_PI * 2);
 		theone = colmdist(map, it);
-		generete_wall(map, it, i);
+		generete_wall(map, it, i, theone);
 		// ft_drawline(map, theone, it);
 		ARC += (M_PI / 3) / WH;
 		i++;

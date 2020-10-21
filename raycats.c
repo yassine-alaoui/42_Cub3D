@@ -6,7 +6,7 @@
 /*   By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 17:33:00 by yaalaoui          #+#    #+#             */
-/*   Updated: 2020/10/20 20:42:19 by yaalaoui         ###   ########.fr       */
+/*   Updated: 2020/10/21 10:41:25 by yaalaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ double	ft_horizontal(t_mapdata *map, t_horizontal *it)
 	double	h;
 
 	h = 0;
-	ay = floor(PY / g_tiles) * g_tiles + (FCEDOWN ? g_tiles : -0.00001);
+	ay = floor(PY / g_tiles) * g_tiles + (g_tiles * FCEDOWN);
 	ax = PX + ((ay - PY) / tan(ARC));
 	ystep = g_tiles * (FCEUP ? -1 : 1);
 	xstep = g_tiles / tan(ARC);
@@ -74,7 +74,7 @@ double	ft_vertical(t_mapdata *map, t_horizontal *it)
 	double	hu;
 
 	hu = 0;
-	ax = floor(PX / g_tiles) * g_tiles + (FCERIGHT ? g_tiles : -0.00001);
+	ax = floor(PX / g_tiles) * g_tiles + (g_tiles * FCERIGHT);
 	ay = PY + ((ax - PX) * tan(ARC));
 	xstep = g_tiles * (FCELEFT ? -1 : 1);
 	ystep = g_tiles * tan(ARC);
