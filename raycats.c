@@ -6,7 +6,7 @@
 /*   By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 17:33:00 by yaalaoui          #+#    #+#             */
-/*   Updated: 2020/10/21 10:41:25 by yaalaoui         ###   ########.fr       */
+/*   Updated: 2020/10/22 10:18:43 by yaalaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ void	rayfacing(t_horizontal *it)
 
 int		inwin(double x, double y, t_mapdata *map)
 {
-	return (((x >= 0) && (x <= WH)) || ((y >= 0) && (y <= HT)));
+	return (((x >= 0) && (x <= g_tiles * PP))
+		&& ((y >= 0) && (y <= g_rows * g_tiles)));
 }
 
 double	ft_horizontal(t_mapdata *map, t_horizontal *it)

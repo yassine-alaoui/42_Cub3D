@@ -6,7 +6,7 @@
 /*   By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 18:18:10 by yaalaoui          #+#    #+#             */
-/*   Updated: 2020/10/21 14:05:14 by yaalaoui         ###   ########.fr       */
+/*   Updated: 2020/10/22 10:09:07 by yaalaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ typedef struct	s_lista
 void			init(t_horizontal *it);
 void			ft_facewhere(t_horizontal *it);
 void			generete_wall(t_mapdata *map, t_horizontal *it,
-	int b, double wall);
+	int b, double theone);
 void			rayfacing(t_horizontal *it);
 void			ft_helpdrawasquare(t_mapdata *map);
 void			picktxt(t_horizontal *it);
