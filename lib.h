@@ -6,7 +6,7 @@
 /*   By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 00:32:04 by yaalaoui          #+#    #+#             */
-/*   Updated: 2020/10/20 16:48:30 by yaalaoui         ###   ########.fr       */
+/*   Updated: 2020/10/22 18:35:36 by yaalaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,6 +140,7 @@ void			ft_joindouble(t_mapdata *map);
 void			treatthatmap(t_mapdata *map);
 void			ft_read(int fd, t_mapdata *map);
 void			ft_helpdrawasquare2(t_mapdata *map);
+void			ft_bzero(void *s, size_t n);
 void			sean(t_mapdata *map);
 void			ft_fhexa(int nb, t_mapdata *map);
 void			ft_chexa(int nb, t_mapdata *map);

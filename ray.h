@@ -6,12 +6,14 @@
 /*   By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 18:18:10 by yaalaoui          #+#    #+#             */
-/*   Updated: 2020/10/22 10:09:07 by yaalaoui         ###   ########.fr       */
+/*   Updated: 2020/10/22 18:34:58 by yaalaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RAY_H
 # define RAY_H
+
+# include <stdint.h>
 
 typedef struct	s_lista
 {
@@ -36,6 +38,34 @@ typedef struct	s_lista
 	int		*texturedata[4];
 	void	*textureimage;
 }				t_horizontal;
+
+typedef	struct	s_bmp_header
+{
+	char		bftype[3];
+	u_int32_t	bfsize;
+	u_int16_t	bfreserved1;
+	u_int16_t	bfreserved2;
+	u_int32_t	bfoffbits;
+	u_int32_t	bisize;
+	int32_t		biwidth;
+	int32_t		biheight;
+	u_int16_t	biplanes;
+	u_int16_t	bibitcount;
+	u_int32_t	bicompression;
+	u_int32_t	bisizeimage;
+	int32_t		bixpermeter;
+	int32_t		biypermeter;
+	u_int32_t	biclrused;
+	u_int32_t	biclrimportant;
+}				t_bmp_file;
+
+typedef struct	s_rgb_data
+{
+	float	r;
+	float	g;
+	float	b;
+}				t_data;
+
 
 # define FCEUP it->faceup
 # define FCEDOWN it->facedown
@@ -66,6 +96,7 @@ void			rayfacing(t_horizontal *it);
 void			ft_helpdrawasquare(t_mapdata *map);
 void			picktxt(t_horizontal *it);
 void			ft_drawaplayer(t_mapdata *map);
+void			save_bmp(t_mapdata *map);
 void			texture(t_horizontal *it, t_mapdata *map);
 double			ft_horizontal(t_mapdata *map, t_horizontal *it);
 double			ft_vertical(t_mapdata *map, t_horizontal *it);

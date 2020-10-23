@@ -1,4 +1,4 @@
-R 1200 1000
+R 1200 800
 
 NO ./textures/grass_wall.xpm
 SO ./textures/natsi_wall.xpm

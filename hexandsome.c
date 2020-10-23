@@ -6,7 +6,7 @@
 /*   By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/10 15:51:47 by yaalaoui          #+#    #+#             */
-/*   Updated: 2020/10/20 13:12:41 by yaalaoui         ###   ########.fr       */
+/*   Updated: 2020/10/23 12:04:21 by yaalaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void		hexf(t_mapdata *map)
 	i = 0;
 	a = 0;
 	b = 0;
+	HEXF = 0;
 	while (FLOOR[i])
 	{
 		if (FLOOR[i] >= '0' && FLOOR[i] <= '9')
@@ -70,6 +71,7 @@ void		hexc(t_mapdata *map)
 	i = 0;
 	a = 0;
 	b = 0;
+	HEXC = 0;
 	while (CEELING[i])
 	{
 		if (CEELING[i] >= '0' && CEELING[i] <= '9')
