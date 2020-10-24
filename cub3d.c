@@ -6,7 +6,7 @@
 /*   By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 00:14:47 by yaalaoui          #+#    #+#             */
-/*   Updated: 2020/10/23 11:57:17 by yaalaoui         ###   ########.fr       */
+/*   Updated: 2020/10/24 18:29:45 by yaalaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ void	ft_read(int fd, t_mapdata *map)
 	while (1)
 	{
 		ret = get_next_line(fd, &line);
+		line = ft_strtrim(line, " ");
 		if (line[0] == 'R' && line[1] == ' ' && (MCHECK++ || 1))
 			ft_fetch(line, &HT, &WH, map);
 		if ((line[0] == '1' || line[ft_strlen(line) - 1] == '1') && MCHECK < 8)

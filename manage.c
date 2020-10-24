@@ -6,7 +6,7 @@
 /*   By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 23:00:47 by yaalaoui          #+#    #+#             */
-/*   Updated: 2020/10/20 14:31:33 by yaalaoui         ###   ########.fr       */
+/*   Updated: 2020/10/24 11:22:31 by yaalaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@ void	ft_fetch(char *line, int *height, int *width, t_mapdata *map)
 
 	while (line[i++] != '\0')
 	{
-		if (((line[i] == '0' && line[i + 1] == ' ') || line[i] == '-'))
-			ft_error("impossible resolution");
 		if (ft_isdigit(line[i]) && cond1 && (check += 1))
 		{
 			(*width = ft_atoi(line + i)) && (cond1 -= cond1);
@@ -38,7 +36,9 @@ void	ft_fetch(char *line, int *height, int *width, t_mapdata *map)
 	(!(line[1] == ' ')) ? ft_error("no space after R") : 0;
 	(check != 2) ? ft_error("wrong number of params") : 0;
 	HT = (*height > 1440) ? 1440 : *height;
+	HT = (*height < 100) ? 100 : *height;
 	WH = (*width > 2560) ? 2560 : *width;
+	WH = (*width < 100) ? 100 : *width;
 }
 
 int		ft_intlen(int num)

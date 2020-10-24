@@ -6,7 +6,7 @@
 /*   By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/12 20:02:34 by yaalaoui          #+#    #+#             */
-/*   Updated: 2020/10/23 12:00:15 by yaalaoui         ###   ########.fr       */
+/*   Updated: 2020/10/24 13:01:17 by yaalaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ int		main(int argc, char **argv)
 		ft_error("can't be allocated");
 	ft_init(map);
 	g_mylist = ft_lstnew(0);
-	ft_lstclear(&g_mylist);
 	MLX = mlx_init();
 	fd = open(argv[1], O_RDONLY);
 	(argc == 2) ? ft_intro(fd, map) : ft_error("where is my map");
@@ -49,4 +48,5 @@ int		main(int argc, char **argv)
 	mlx_put_image_to_window(MLX, g_mlx_win, IMAGE, 0, 0);
 	mlx_loop_hook(MLX, &loop_me, map);
 	mlx_loop(MLX);
+	ft_lstclear(&g_mylist);
 }

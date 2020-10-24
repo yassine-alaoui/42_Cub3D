@@ -6,7 +6,7 @@
 /*   By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 00:32:04 by yaalaoui          #+#    #+#             */
-/*   Updated: 2020/10/22 18:35:36 by yaalaoui         ###   ########.fr       */
+/*   Updated: 2020/10/24 11:55:52 by yaalaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,6 +129,7 @@ void			ft_south(t_mapdata *map, char *line);
 void			ft_west(t_mapdata *map, char *line);
 void			ft_east(t_mapdata *map, char *line);
 void			ft_sprite(t_mapdata *map, char *line);
+void			skipspace(char **line);
 void			ft_floor(t_mapdata *map, char *line);
 void			ft_ceeling(t_mapdata *map, char *line);
 void			ft_fetch(char *line, int *height, int *width, t_mapdata *map);
@@ -162,6 +163,7 @@ int				ft_iswall(t_mapdata *map);
 int				g_tiles;
 int				g_rows;
 size_t			ft_strlen(const char *s);
+char			*ft_strtrim(char *s1, char const *set);
 char			*ft_strdup(const char *s1);
 char			*ft_substr(char const *dst, unsigned int start, size_t len);
 char			*ft_strchr(const char *s, int c);

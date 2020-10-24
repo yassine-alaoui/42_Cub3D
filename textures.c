@@ -6,7 +6,7 @@
 /*   By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/18 20:40:11 by yaalaoui          #+#    #+#             */
-/*   Updated: 2020/10/22 11:34:44 by yaalaoui         ###   ########.fr       */
+/*   Updated: 2020/10/24 16:29:27 by yaalaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,10 @@ void	texture(t_horizontal *it, t_mapdata *map)
 	int	usless;
 	int uslesser;
 
+	(open(EA, O_RDONLY) > 0) ? 0 : ft_error("wrong ea path");
+	(open(NO, O_RDONLY) > 0) ? 0 : ft_error("wrong no path");
+	(open(WE, O_RDONLY) > 0) ? 0 : ft_error("wrong we path");
+	(open(SO, O_RDONLY) > 0) ? 0 : ft_error("wrong so path");
 	TXTIMG = mlx_xpm_file_to_image(MLX, EA, &uslesser, &uslesser);
 	TXTDATA[0] = (int *)mlx_get_data_addr(TXTIMG, &usless, &usless, &usless);
 	TXTIMG = mlx_xpm_file_to_image(MLX, NO, &uslesser, &uslesser);
