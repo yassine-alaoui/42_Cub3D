@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "lib.h"
+#include "ray.h"
 
 int		wallconditions(t_mapdata *map, int *i, int *j)
 {
@@ -57,6 +58,8 @@ int		helptreatingthatmap(char c)
 	if (c != '1' && c != '2' && c != '0' && c != 'N'
 		&& c != 'S' && c != 'E' && c != 'W' && c != ' ')
 		return (0);
+	if (c == '2')
+		g_count++;
 	else
 		return (1);
 }

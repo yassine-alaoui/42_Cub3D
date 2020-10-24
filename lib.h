@@ -48,6 +48,7 @@ typedef struct	s_list
 	int		down;
 	int		right;
 	int		left;
+	int		raydist;
 	float	playerx;
 	float	playery;
 	float	wdis;
@@ -117,6 +118,7 @@ typedef struct	s_lst
 # define FDOWN map->down
 # define FRIGHT map->right
 # define FLEFT map->left
+# define RAYDIST map->raydist
 
 # define RAD(x) ((x * 2 * M_PI) / 360)
 

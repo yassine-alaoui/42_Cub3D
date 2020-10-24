@@ -88,6 +88,7 @@ void	ft_drawaplayer(t_mapdata *map)
 		if (ARC > M_PI * 2)
 			ARC -= (M_PI * 2);
 		theone = colmdist(map, it);
+		RAYDIST = theone;
 		generete_wall(map, it, i, theone);
 		// ft_drawline(map, theone, it);
 		ARC += (M_PI / 3) / WH;

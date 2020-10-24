@@ -33,6 +33,7 @@ int		main(int argc, char **argv)
 	t_mapdata	*map;
 
 	g_tiles = 32;
+	g_count = 0;
 	if (!(map = malloc(sizeof(t_mapdata))))
 		ft_error("can't be allocated");
 	ft_init(map);

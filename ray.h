@@ -59,12 +59,16 @@ typedef	struct	s_bmp_header
 	u_int32_t	biclrimportant;
 }				t_bmp_file;
 
-typedef struct	s_rgb_data
+typedef struct	s_prite
 {
-	float	r;
-	float	g;
-	float	b;
-}				t_data;
+	int	x;
+	int	x_off;
+	int	y;
+	int	y_off;
+	int	dist;
+	int size;
+	int	*sdata;
+}				t_sprite;
 
 
 # define FCEUP it->faceup
@@ -88,6 +92,7 @@ typedef struct	s_rgb_data
 # define TXTDATA it->texturedata
 # define TXTNUM it->textnum
 
+int				g_count;
 void			init(t_horizontal *it);
 void			ft_facewhere(t_horizontal *it);
 void			generete_wall(t_mapdata *map, t_horizontal *it,
