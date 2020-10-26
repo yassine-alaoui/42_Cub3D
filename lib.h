@@ -6,7 +6,7 @@
 /*   By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 00:32:04 by yaalaoui          #+#    #+#             */
-/*   Updated: 2020/10/26 18:45:42 by yaalaoui         ###   ########.fr       */
+/*   Updated: 2020/10/26 19:28:20 by yaalaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,8 +150,7 @@ void			ft_bzero(void *s, size_t n);
 void			sean(t_mapdata *map);
 void			ft_fhexa(int nb, t_mapdata *map);
 void			ft_chexa(int nb, t_mapdata *map);
-void			hexf(t_mapdata *map);
-void			hexc(t_mapdata *map);
+void			hex(int hex);
 void			*g_mlx_win;
 int				loop_me(t_mapdata *map);
 int				ft_fill(char **last, int fd);

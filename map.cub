@@ -6,8 +6,8 @@ WE ./textures/colored_rock.xpm
 EA ./textures/rock.xpm
 S ./textures/coin.xpm
 
-C 220,100,0
-F 225,30,0
+C 50,50,200
+F 255,50,50
 
         1111111111111111111111111
         1000000000110000000000001
