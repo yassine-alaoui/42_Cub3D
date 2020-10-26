@@ -6,7 +6,7 @@
 /*   By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:32:53 by yaalaoui          #+#    #+#             */
-/*   Updated: 2020/10/24 11:43:24 by yaalaoui         ###   ########.fr       */
+/*   Updated: 2020/10/26 18:45:07 by yaalaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,15 +88,11 @@ void	ft_drawaplayer(t_mapdata *map)
 		if (ARC > M_PI * 2)
 			ARC -= (M_PI * 2);
 		theone = colmdist(map, it);
-		RAYDIST = theone;
+		RAYDIST[i] = theone;
 		generete_wall(map, it, i, theone);
 		// ft_drawline(map, theone, it);
 		ARC += (M_PI / 3) / WH;
 		i++;
 	}
-	// if (screen == 0)
-	// {
-	// 	save_bmp(map);
-	// 	screen = 1;
-	// }
+	init_spt(map, it);
 }

@@ -6,7 +6,7 @@
 /*   By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 00:14:47 by yaalaoui          #+#    #+#             */
-/*   Updated: 2020/10/24 18:29:45 by yaalaoui         ###   ########.fr       */
+/*   Updated: 2020/10/26 18:37:41 by yaalaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ void	ft_init(t_mapdata *map)
 	KEY_S0 = 0;
 	LOL = 0;
 	PP = 0;
+	SCREEN = 0;
 	map->wdis = 2;
 	map->dwdx = sin(ANGLE) * map->wdis;
 	map->dwdy = cos(ANGLE) * map->wdis;
@@ -77,7 +78,6 @@ void	ft_read(int fd, t_mapdata *map)
 	while (1)
 	{
 		ret = get_next_line(fd, &line);
-		line = ft_strtrim(line, " ");
 		if (line[0] == 'R' && line[1] == ' ' && (MCHECK++ || 1))
 			ft_fetch(line, &HT, &WH, map);
 		if ((line[0] == '1' || line[ft_strlen(line) - 1] == '1') && MCHECK < 8)
@@ -133,5 +133,7 @@ void	ft_helpdrawasquare(t_mapdata *map)
 	// 	y += g_tiles;
 	// 	i++;
 	// }
+	RAYDIST = malloc(sizeof(int *) * WH);
+	ft_lstadd_front(&g_mylist, ft_lstnew(RAYDIST));
 	ft_drawaplayer(map);
 }

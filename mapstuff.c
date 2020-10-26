@@ -6,7 +6,7 @@
 /*   By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/12 21:33:27 by yaalaoui          #+#    #+#             */
-/*   Updated: 2020/10/24 18:27:33 by yaalaoui         ###   ########.fr       */
+/*   Updated: 2020/10/26 18:10:21 by yaalaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,11 +55,11 @@ void	continuetreatingthatmap(t_mapdata *map)
 
 int		helptreatingthatmap(char c)
 {
+	if (c == '2')
+		g_count++;
 	if (c != '1' && c != '2' && c != '0' && c != 'N'
 		&& c != 'S' && c != 'E' && c != 'W' && c != ' ')
 		return (0);
-	if (c == '2')
-		g_count++;
 	else
 		return (1);
 }

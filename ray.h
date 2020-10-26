@@ -6,7 +6,7 @@
 /*   By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 18:18:10 by yaalaoui          #+#    #+#             */
-/*   Updated: 2020/10/22 18:34:58 by yaalaoui         ###   ########.fr       */
+/*   Updated: 2020/10/26 18:50:46 by yaalaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,13 +61,18 @@ typedef	struct	s_bmp_header
 
 typedef struct	s_prite
 {
-	int	x;
-	int	x_off;
-	int	y;
-	int	y_off;
-	int	dist;
-	int size;
-	int	*sdata;
+	float	x;
+	float	x_off;
+	float	y;
+	float	y_off;
+	float	dist;
+	float	size;
+	int		width;
+	int		height;
+	int		*sdata;
+	int		ditch;
+	int		ditch1;
+	void	*simg;
 }				t_sprite;
 
 
@@ -91,12 +96,17 @@ typedef struct	s_prite
 # define TXTIMG it->textureimage
 # define TXTDATA it->texturedata
 # define TXTNUM it->textnum
+# define SH sprite[k].height
+# define SW sprite[k].width
+# define DT sprite[k].ditch
+# define DT1 sprite[k].ditch1
 
 int				g_count;
 void			init(t_horizontal *it);
 void			ft_facewhere(t_horizontal *it);
 void			generete_wall(t_mapdata *map, t_horizontal *it,
 	int b, double theone);
+void			init_spt(t_mapdata *map, t_horizontal *it);
 void			rayfacing(t_horizontal *it);
 void			ft_helpdrawasquare(t_mapdata *map);
 void			picktxt(t_horizontal *it);

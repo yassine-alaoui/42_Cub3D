@@ -6,7 +6,7 @@
 /*   By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 00:32:04 by yaalaoui          #+#    #+#             */
-/*   Updated: 2020/10/24 11:55:52 by yaalaoui         ###   ########.fr       */
+/*   Updated: 2020/10/26 18:45:42 by yaalaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,8 @@ typedef struct	s_list
 	int		down;
 	int		right;
 	int		left;
-	int		raydist;
+	int		*raydist;
+	int		screen;
 	float	playerx;
 	float	playery;
 	float	wdis;
@@ -119,8 +120,10 @@ typedef struct	s_lst
 # define FRIGHT map->right
 # define FLEFT map->left
 # define RAYDIST map->raydist
+# define SCREEN map->screen
 
 # define RAD(x) ((x * 2 * M_PI) / 360)
+# define DEG(x) ((x / M_PI) * 180)
 
 void			ft_init(t_mapdata *map);
 void			ft_error(char *s);

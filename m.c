@@ -6,7 +6,7 @@
 /*   By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/12 20:02:34 by yaalaoui          #+#    #+#             */
-/*   Updated: 2020/10/24 13:01:17 by yaalaoui         ###   ########.fr       */
+/*   Updated: 2020/10/26 18:40:20 by yaalaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,23 @@ void	init(t_horizontal *it)
 	it->faceright = 0;
 }
 
+void	mlx_stuff(t_mapdata *map)
+{
+	// if (screen == 0)
+	// {
+	// 	save_bmp(map);
+	// 	screen = 1;
+	// }
+	g_mlx_win = mlx_new_window(MLX, WH, HT, "CUB3D");
+	IMAGE = mlx_new_image(MLX, WH, HT);
+	DATA = (int *)mlx_get_data_addr(IMAGE, &SIZELINE, &ENDIAN, &ENDIAN);
+	sean(map);
+	ft_helpdrawasquare(map);
+	mlx_put_image_to_window(MLX, g_mlx_win, IMAGE, 0, 0);
+	mlx_loop_hook(MLX, &loop_me, map);
+	mlx_loop(MLX);
+}
+
 int		main(int argc, char **argv)
 {
 	int			fd;
@@ -40,14 +57,9 @@ int		main(int argc, char **argv)
 	g_mylist = ft_lstnew(0);
 	MLX = mlx_init();
 	fd = open(argv[1], O_RDONLY);
-	(argc == 2) ? ft_intro(fd, map) : ft_error("where is my map");
-	g_mlx_win = mlx_new_window(MLX, WH, HT, "CUB3D");
-	IMAGE = mlx_new_image(MLX, WH, HT);
-	DATA = (int *)mlx_get_data_addr(IMAGE, &SIZELINE, &ENDIAN, &ENDIAN);
-	sean(map);
-	ft_helpdrawasquare(map);
-	mlx_put_image_to_window(MLX, g_mlx_win, IMAGE, 0, 0);
-	mlx_loop_hook(MLX, &loop_me, map);
-	mlx_loop(MLX);
-	ft_lstclear(&g_mylist);
+	if (argc == 3)
+		SCREEN = 1;
+	(argc == 2 || (argc == 3 && SCREEN == 1)) ? ft_intro(fd, map)
+		: ft_error("where is my map");
+	mlx_stuff(map);
 }
