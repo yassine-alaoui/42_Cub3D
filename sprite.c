@@ -6,37 +6,37 @@
 /*   By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/23 14:34:09 by yaalaoui          #+#    #+#             */
-/*   Updated: 2020/10/26 18:55:08 by yaalaoui         ###   ########.fr       */
+/*   Updated: 2020/10/28 19:14:57 by yaalaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib.h"
 #include "ray.h"
 
-void	draw_sprite1(t_mapdata *map, t_sprite *sprite, int id)
+void	draw_sprite(t_mapdata *map, int id)
 {
-	int i;
-	int	j;
-	int c;
-	int size;
+	int		i;
+	int		j;
+	int		c;
+	float	size;
 
 	i = -1;
-	size = sprite[id].size;
+	size = SPRITES[id].size;
 	while (++i < size)
 	{
-		if (sprite[id].x_off + i < 0 || sprite[id].x_off + i > WH)
+		if (SPRITES[id].x_off + i < 0 || SPRITES[id].x_off + i > WH)
 			continue ;
-		if (RAYDIST[(int)(sprite[id].x_off + i)] <= sprite[id].dist)
-			continue ;
+		// if (RAYDIST[(int)(SPRITES[id].x_off + i)] <= SPRITES[id].dist)
+		// 	continue ;
 		j = -1;
 		while (++j < size)
 		{
-			if (sprite[id].y_off + j < 0 || sprite[id].y_off + j > HT)
+			if (SPRITES[id].y_off + j < 0 || SPRITES[id].y_off + j > HT)
 				continue ;
-			c = sprite[id].sdata[64 * (64 * j / size) + (64 * i / size)];
-			if (c != 0)
-				DATA[(int)(j + sprite[id].y_off) *
-				WH + (int)(i + sprite[id].x_off)] = c;
+			c = SPRITES->sdata[(int)(g_tiles * (g_tiles * j / (int)size) + (g_tiles * i / (int)size))];
+			// if (c != 0)
+				DATA[(int)((j + SPRITES[id].y_off) *
+				WH + (i + SPRITES[id].x_off))] = c;
 		}
 	}
 }
@@ -63,63 +63,58 @@ void	to_sort(t_sprite *spt)
 	}
 }
 
-void	to_sprite(t_sprite *sprite, t_mapdata *map, int m, t_horizontal *it)
+void	to_sprite(t_mapdata *map, int m)
 {
 	float	angle;
+	const float pplane_dist = (WH / 2.0F) / tanf((RAD(60)) / 2);
 	int		k;
 
 	k = -1;
 	while (++m < g_count)
-		sprite[m].dist = sqrt((sprite[m].x - PX) *
-			(sprite[m].x - PX) + (sprite[m].y - PY) * (sprite[m].y - PY));
-	to_sort(sprite);
+		SPRITES[m].dist = sqrtf((PX - SPRITES[m].x) *
+			(PX - SPRITES[m].x) + (PY - SPRITES[m].y) * (PY - SPRITES[m].y));
+	to_sort(SPRITES);
 	while (++k < g_count)
 	{
-		sprite[k].dist = sqrt((sprite[m].x - PX) *
-			(sprite[m].x - PX) + (sprite[m].y - PY) * (sprite[m].y - PY));
-		angle = atan2(sprite[k].y - PY, sprite[k].x - PX);
-		while (angle - ARC > M_PI)
+		// SPRITES[k].dist = sqrtf((SPRITES[k].x - PX) *
+		// 	(SPRITES[k].x - PX) + (SPRITES[k].y - PY) * (SPRITES[k].y - PY));
+		angle = atan2f(SPRITES[k].y - PY, SPRITES[k].x - PX);
+		while (angle - ANGLE > M_PI)
 			angle -= 2 * M_PI;
-		while (angle - ARC < -M_PI)
+		while (angle - ANGLE < -M_PI)
 			angle += 2 * M_PI;
-		if (HT > WH)
-			sprite[k].size = (HT / sprite[k].dist) * g_tiles;
-		else
-			sprite[k].size = (WH / sprite[k].dist) * g_tiles;
-		sprite[k].y_off = HT / 2 - sprite[k].size / 2;
-		sprite[k].x_off = (DEG(angle) - DEG(ARC)) * WH
-		/ 60 + ((WH / 2) - (sprite[k].size / 2));
-		draw_sprite1(map, sprite, k);
+		SPRITES[k].size = ((float)g_tiles / SPRITES[k].dist * pplane_dist);
+		SPRITES[k].y_off = HT / 2.0f - SPRITES[k].size / 2;
+		SPRITES[k].x_off = ((DEG(angle) - DEG(ANGLE)) * WH)
+		/ (float)32 + ((WH / 2.0f) - (SPRITES[k].size / 2));
+		draw_sprite(map, k);
 	}
 }
 
-void	init_spt(t_mapdata *map, t_horizontal *it)
+void	init_spt(t_mapdata *map)
 {
 	int			i;
 	int			j;
 	int			k;
-	t_sprite	*sprite;
+	// t_SPRITES	*SPRITES;
 
 	i = -1;
 	k = 0;
-	(void)it;
-	if (!(sprite = malloc(sizeof(t_sprite) * (g_count + 1))))
+	if (!(SPRITES = malloc(sizeof(t_sprite) * (g_count + 1))))
 		ft_error("");
-	ft_lstadd_front(&g_mylist, ft_lstnew(sprite));
-	sprite->simg = mlx_xpm_file_to_image(MLX, S, &SH, &SW);
-	// sprite->sdata = (int *)
-	// 	mlx_get_data_addr(sprite->simg, &DT, &DT1, &DT1);
-	while (MAP2D[++i] != 0 && (j = -1))
+	ft_lstadd_front(&g_mylist, ft_lstnew(SPRITES));
+	SPRITES->simg = mlx_xpm_file_to_image(MLX, S, &SH, &SW);
+	SPRITES->sdata = (int *)mlx_get_data_addr(SPRITES->simg, &DT, &DT1, &DT1);
+	while (MAP2D[++i] != 0 && (j = -1) && (k < g_count))
 	{
-		while (MAP2D[i][++j] != 0)
+		while (MAP2D[i][++j] != 0 && (k < g_count))
 		{
 			if (MAP2D[i][j] == '2')
 			{
-				sprite[k].x = (j + 0.5f) * (float)g_tiles;
-				sprite[k].y = (i + 0.5f) * (float)g_tiles;
+				SPRITES[k].x = (j + 0.5f) * g_tiles;
+				SPRITES[k].y = (i + 0.5f) * g_tiles;
 				k++;
 			}
 		}
 	}
-	// to_sprite(sprite, map, -1, it);
 }

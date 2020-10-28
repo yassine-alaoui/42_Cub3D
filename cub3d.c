@@ -6,7 +6,7 @@
 /*   By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 00:14:47 by yaalaoui          #+#    #+#             */
-/*   Updated: 2020/10/26 18:37:41 by yaalaoui         ###   ########.fr       */
+/*   Updated: 2020/10/28 13:05:33 by yaalaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	ft_init(t_mapdata *map)
 	MAP2D = 0;
 	DATA = 0;
 	IMAGE = 0;
-	ANGLE = 0;
+	PY = 0;
 	KEY_S1 = 0;
 	KEY_1 = 0;
 	KEY_0 = 0;

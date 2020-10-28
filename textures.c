@@ -6,21 +6,24 @@
 /*   By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/18 20:40:11 by yaalaoui          #+#    #+#             */
-/*   Updated: 2020/10/26 18:17:10 by yaalaoui         ###   ########.fr       */
+/*   Updated: 2020/10/28 13:06:16 by yaalaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib.h"
 #include "ray.h"
 
-void	sean(t_mapdata *map)
+float	sean(t_mapdata *map)
 {
 	if (MAP2D[(int)PY / g_tiles][(int)PX / g_tiles] == 'N')
-		ANGLE += 90 * M_PI / 180;
-	if (MAP2D[(int)PY / g_tiles][(int)PX / g_tiles] == 'E')
-		ANGLE += 180 * M_PI / 180;
-	if (MAP2D[(int)PY / g_tiles][(int)PX / g_tiles] == 'S')
-		ANGLE += 270 * M_PI / 180;
+		return (RAD(270));
+	else if (MAP2D[(int)PY / g_tiles][(int)PX / g_tiles] == 'W')
+		return (RAD(180));
+	else if (MAP2D[(int)PY / g_tiles][(int)PX / g_tiles] == 'S')
+		return (RAD(90));
+	else if (MAP2D[(int)PY / g_tiles][(int)PX / g_tiles] == 'E')
+		return (RAD(0));
+	return (0);
 }
 
 void	picktxt(t_horizontal *it)

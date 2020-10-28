@@ -6,7 +6,7 @@
 /*   By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 16:26:44 by yaalaoui          #+#    #+#             */
-/*   Updated: 2020/10/22 10:11:58 by yaalaoui         ###   ########.fr       */
+/*   Updated: 2020/10/28 12:34:52 by yaalaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,23 +47,28 @@ static void	ft_drawwall(int wall, t_mapdata *map,
 	t_horizontal *it, int b)
 {
 	float	i;
-	float	y;
+	float	toppix;
+	float	botpix;
 	float	offsetx;
+	float	offsety;
 
 	if (HV)
 		offsetx = (int)WALLY % g_tiles;
 	else
 		offsetx = (int)WALLX % g_tiles;
-	i = (HT / 2) - (wall / 2);
-	y = 0;
+	toppix = (HT / 2) - (wall / 2);
+	toppix = (toppix < 0) ? 0 : toppix;
+	i = toppix;
+	botpix = (HT / 2) + (wall / 2);
+	botpix = (botpix >= HT) ? HT : botpix;
 	picktxt(it);
-	while (i < (HT / 2) + (wall / 2))
+	while (i < botpix)
 	{
+		offsety = (i + (wall - HT) / 2) * ((float)g_tiles / wall);
 		if (i >= 0 && i < HT && b >= 0 && b < WH)
 			DATA[(int)i * WH + b] = TXTDATA[TXTNUM][(int)offsetx
-				+ (g_tiles * (int)y)];
+				+ (g_tiles * (int)offsety)];
 		i++;
-		y += (float)g_tiles / wall;
 	}
 }
 

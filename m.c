@@ -6,7 +6,7 @@
 /*   By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/12 20:02:34 by yaalaoui          #+#    #+#             */
-/*   Updated: 2020/10/26 18:40:20 by yaalaoui         ###   ########.fr       */
+/*   Updated: 2020/10/28 19:11:01 by yaalaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ void	mlx_stuff(t_mapdata *map)
 	g_mlx_win = mlx_new_window(MLX, WH, HT, "CUB3D");
 	IMAGE = mlx_new_image(MLX, WH, HT);
 	DATA = (int *)mlx_get_data_addr(IMAGE, &SIZELINE, &ENDIAN, &ENDIAN);
-	sean(map);
 	ft_helpdrawasquare(map);
 	mlx_put_image_to_window(MLX, g_mlx_win, IMAGE, 0, 0);
 	mlx_loop_hook(MLX, &loop_me, map);
@@ -61,5 +60,7 @@ int		main(int argc, char **argv)
 		SCREEN = 1;
 	(argc == 2 || (argc == 3 && SCREEN == 1)) ? ft_intro(fd, map)
 		: ft_error("where is my map");
+	ANGLE = sean(map);
+	init_spt(map);
 	mlx_stuff(map);
 }

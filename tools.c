@@ -6,7 +6,7 @@
 /*   By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:32:53 by yaalaoui          #+#    #+#             */
-/*   Updated: 2020/10/26 18:45:07 by yaalaoui         ###   ########.fr       */
+/*   Updated: 2020/10/28 19:10:34 by yaalaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,5 +94,5 @@ void	ft_drawaplayer(t_mapdata *map)
 		ARC += (M_PI / 3) / WH;
 		i++;
 	}
-	init_spt(map, it);
+	to_sprite(map, -1);
 }

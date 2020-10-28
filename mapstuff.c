@@ -6,7 +6,7 @@
 /*   By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/12 21:33:27 by yaalaoui          #+#    #+#             */
-/*   Updated: 2020/10/26 18:10:21 by yaalaoui         ###   ########.fr       */
+/*   Updated: 2020/10/28 17:00:10 by yaalaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ void	continuetreatingthatmap(t_mapdata *map)
 		j = -1;
 		while (MAP2D[i][++j])
 		{
+			if (MAP2D[i][j] == '2')
+				g_count++;
 			if (i == 0 || i == g_rows - 1)
 				if (MAP2D[i][j] != '1' && MAP2D[i][j] != ' ')
 					ft_error("map extreems  aren't closed");
@@ -55,8 +57,6 @@ void	continuetreatingthatmap(t_mapdata *map)
 
 int		helptreatingthatmap(char c)
 {
-	if (c == '2')
-		g_count++;
 	if (c != '1' && c != '2' && c != '0' && c != 'N'
 		&& c != 'S' && c != 'E' && c != 'W' && c != ' ')
 		return (0);
@@ -91,7 +91,7 @@ void	treatthatmap(t_mapdata *map)
 				|| MAP2D[i][j] == 'E' || MAP2D[i][j] == 'S') && p == 0)
 			{
 				p = 1;
-				(PX = (j * g_tiles)) && (PY += (i * g_tiles));
+				(PX = ((j + 0.5) * g_tiles)) && (PY += ((i + 0.5) * g_tiles));
 			}
 			else if ((MAP2D[i][j] == 'N' || MAP2D[i][j] == 'W'
 				|| MAP2D[i][j] == 'E' || MAP2D[i][j] == 'S') && p == 1)

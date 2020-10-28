@@ -6,17 +6,17 @@
 /*   By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/23 03:54:40 by yaalaoui          #+#    #+#             */
-/*   Updated: 2020/10/23 11:59:16 by yaalaoui         ###   ########.fr       */
+/*   Updated: 2020/10/28 18:43:13 by yaalaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib.h"
 #include "ray.h"
 
-int		ft_quit()
+int		ft_quit(int key)
 {
-	// if (key == 53)
-	// 	ft_error("game over");
+	if (key == 53)
+		ft_error("game over");
 	return (0);
 }
 
@@ -54,14 +54,14 @@ int		key_pressed(int key, t_mapdata *map)
 
 int		ft_iswall(t_mapdata *map)
 {
-	unsigned int newx;
-	unsigned int newy;
+	int newx;
+	int newy;
 
 	if (PX < 0 || PY < 0)
 		return (1);
-	newy = (int)(PY + ((KEY_1) * sin(ANGLE) * 20)) / (g_tiles);
-	newx = (int)(PX + ((KEY_1) * cos(ANGLE) * 20)) / (g_tiles);
-	if (MAP2D[newy][newx] == '1')
+	newy = (int)(PY + ((KEY_1) * sin(ANGLE) * 5)) / (g_tiles);
+	newx = (int)(PX + ((KEY_1) * cos(ANGLE) * 5)) / (g_tiles);
+	if (MAP2D[newy][newx] == '1' || MAP2D[newy][newx] == '2')
 		return (1);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 00:32:04 by yaalaoui          #+#    #+#             */
-/*   Updated: 2020/10/26 19:28:20 by yaalaoui         ###   ########.fr       */
+/*   Updated: 2020/10/28 19:09:58 by yaalaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,22 @@
 # include <stdlib.h>
 # include <string.h>
 # include <fcntl.h>
+
+typedef struct	s_prite
+{
+	float	x;
+	float	x_off;
+	float	y;
+	float	y_off;
+	float	dist;
+	float	size;
+	int		width;
+	int		height;
+	int		*sdata;
+	int		ditch;
+	int		ditch1;
+	void	*simg;
+}				t_sprite;
 
 typedef struct	s_list
 {
@@ -68,6 +84,7 @@ typedef struct	s_list
 	char	*east;
 	char	*sprite;
 	char	**map2d;
+	t_sprite	*sprites;
 }				t_mapdata;
 
 typedef struct	s_lst
@@ -121,9 +138,10 @@ typedef struct	s_lst
 # define FLEFT map->left
 # define RAYDIST map->raydist
 # define SCREEN map->screen
+# define SPRITES map->sprites
 
-# define RAD(x) ((x * 2 * M_PI) / 360)
-# define DEG(x) ((x / M_PI) * 180)
+# define RAD(x) (x * (M_PI / 180))
+# define DEG(x) ((180 / M_PI) * x)
 
 void			ft_init(t_mapdata *map);
 void			ft_error(char *s);
@@ -147,9 +165,9 @@ void			treatthatmap(t_mapdata *map);
 void			ft_read(int fd, t_mapdata *map);
 void			ft_helpdrawasquare2(t_mapdata *map);
 void			ft_bzero(void *s, size_t n);
-void			sean(t_mapdata *map);
 void			ft_fhexa(int nb, t_mapdata *map);
 void			ft_chexa(int nb, t_mapdata *map);
+void			to_sprite(t_mapdata *map, int m);
 void			hex(int hex);
 void			*g_mlx_win;
 int				loop_me(t_mapdata *map);
@@ -173,6 +191,7 @@ char			*ft_substr(char const *dst, unsigned int start, size_t len);
 char			*ft_strchr(const char *s, int c);
 char			*ft_strjoin(char *s1, char *s2);
 char			**ft_split(char const *s, char c);
+float			sean(t_mapdata *map);
 t_list			*ft_lstnew(void *content);
 t_list			*g_mylist;
 
