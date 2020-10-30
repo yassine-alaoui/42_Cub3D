@@ -64,7 +64,7 @@ void	ft_init(t_mapdata *map)
 	LOL = 0;
 	PP = 0;
 	SCREEN = 0;
-	map->wdis = 2;
+	map->wdis = 0;
 	map->dwdx = sin(ANGLE) * map->wdis;
 	map->dwdy = cos(ANGLE) * map->wdis;
 	map->drota = 2 * (M_PI / 180);

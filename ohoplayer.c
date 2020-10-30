@@ -78,8 +78,8 @@ int		loop_me(t_mapdata *map)
 		ANGLE = ANGLE + ((KEY_0) * 0.06);
 	if (!ft_iswall(map) && KEY_S1 == 1)
 	{
-		PX = PX + (KEY_1 * cos(ANGLE) * 1 * ((WH > 1000 && HT > 700) ? 2 : 1));
-		PY = PY + (KEY_1 * sin(ANGLE) * 1) * ((WH > 1000 && HT > 700) ? 2 : 1);
+		PX = PX + (KEY_1 * cos(ANGLE) * 1 * ((WH > 1000 && HT > 700) ? 3 : 1));
+		PY = PY + (KEY_1 * sin(ANGLE) * 1) * ((WH > 1000 && HT > 700) ? 3 : 1);
 	}
 	mlx_clear_window(MLX, g_mlx_win);
 	// mlx_destroy_image(MLX, IMAGE);

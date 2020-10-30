@@ -21,6 +21,7 @@ void	draw_sprite(t_mapdata *map, int id)
 	float	size;
 
 	i = -1;
+	c = 0;
 	size = SPRITES[id].size;
 	while (++i < size)
 	{
@@ -71,22 +72,22 @@ void	to_sprite(t_mapdata *map, int m)
 
 	k = -1;
 	while (++m < g_count)
-		SPRITES[m].dist = sqrtf((PX - SPRITES[m].x) *
-			(PX - SPRITES[m].x) + (PY - SPRITES[m].y) * (PY - SPRITES[m].y));
+		SPRITES[m].dist = sqrtf(((SPRITES[m].x) - PX) *
+			((SPRITES[m].x) - PX) + ((SPRITES[m].y) - PY) * ((SPRITES[m].y) - PY));
 	to_sort(SPRITES);
 	while (++k < g_count)
 	{
-		// SPRITES[k].dist = sqrtf((SPRITES[k].x - PX) *
-		// 	(SPRITES[k].x - PX) + (SPRITES[k].y - PY) * (SPRITES[k].y - PY));
+		// SPRITES[k].dist = sqrtf(((SPRITES[k].x) - PX) *
+		// 	((SPRITES[k].x) - PX) + ((SPRITES[k].y) - PY) * ((SPRITES[k].y) - PY));
 		angle = atan2f(SPRITES[k].y - PY, SPRITES[k].x - PX);
 		while (angle - ANGLE > M_PI)
 			angle -= 2 * M_PI;
 		while (angle - ANGLE < -M_PI)
 			angle += 2 * M_PI;
 		SPRITES[k].size = ((float)g_tiles / SPRITES[k].dist * pplane_dist);
-		SPRITES[k].y_off = HT / 2 - (int)(SPRITES[k].size / 2);
+		SPRITES[k].y_off = HT / 2 - (int)SPRITES[k].size / 2;
 		SPRITES[k].x_off = ((DEG(angle) - DEG(ANGLE)) * WH)
-		/ (float)g_tiles + ((WH / 2.0f) - (int)(SPRITES[k].size / 2));
+		/ (float)g_tiles + ((WH / 2) - (int)SPRITES[k].size / 2);
 		draw_sprite(map, k);
 	}
 }

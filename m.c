@@ -29,11 +29,12 @@ void	init(t_horizontal *it)
 
 void	mlx_stuff(t_mapdata *map)
 {
-	// if (screen == 0)
-	// {
-	// 	save_bmp(map);
-	// 	screen = 1;
-	// }
+	if (SCREEN == 1)
+	{
+		save_bmp(map);
+		ft_lstclear(&g_mylist);
+		exit(1);
+	}
 	g_mlx_win = mlx_new_window(MLX, WH, HT, "CUB3D");
 	IMAGE = mlx_new_image(MLX, WH, HT);
 	DATA = (int *)mlx_get_data_addr(IMAGE, &SIZELINE, &ENDIAN, &ENDIAN);
@@ -57,7 +58,8 @@ int		main(int argc, char **argv)
 	MLX = mlx_init();
 	fd = open(argv[1], O_RDONLY);
 	if (argc == 3)
-		SCREEN = 1;
+		((ft_strncmp(argv[2], "--save", 6) == 0)) ?
+			SCREEN = 1 : ft_error("wrong argument");
 	(argc == 2 || (argc == 3 && SCREEN == 1)) ? ft_intro(fd, map)
 		: ft_error("where is my map");
 	ANGLE = sean(map);

@@ -170,6 +170,7 @@ void			ft_chexa(int nb, t_mapdata *map);
 void			to_sprite(t_mapdata *map, int m);
 void			hex(int hex);
 void			*g_mlx_win;
+int				ft_strncmp(const char *s1, const char *s2, size_t n);
 int				loop_me(t_mapdata *map);
 int				ft_fill(char **last, int fd);
 int				get_next_line(int fd, char **line);
