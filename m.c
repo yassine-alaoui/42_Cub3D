@@ -48,7 +48,7 @@ int		main(int argc, char **argv)
 	int			fd;
 	t_mapdata	*map;
 
-	g_tiles = 32;
+	g_tiles = 64;
 	g_count = 0;
 	if (!(map = malloc(sizeof(t_mapdata))))
 		ft_error("can't be allocated");

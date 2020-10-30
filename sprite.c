@@ -26,15 +26,15 @@ void	draw_sprite(t_mapdata *map, int id)
 	{
 		if (SPRITES[id].x_off + i < 0 || SPRITES[id].x_off + i > WH)
 			continue ;
-		// if (RAYDIST[(int)(SPRITES[id].x_off + i)] <= SPRITES[id].dist)
-		// 	continue ;
+		if (RAYDIST[(int)(SPRITES[id].x_off + i)] <= SPRITES[id].dist)
+			continue ;
 		j = -1;
 		while (++j < size)
 		{
 			if (SPRITES[id].y_off + j < 0 || SPRITES[id].y_off + j > HT)
 				continue ;
 			c = SPRITES->sdata[(int)(g_tiles * (g_tiles * j / (int)size) + (g_tiles * i / (int)size))];
-			// if (c != 0)
+			if (c != SPRITES->sdata[0] && j + 1 <= size && i + 1 <= size)
 				DATA[(int)((j + SPRITES[id].y_off) *
 				WH + (i + SPRITES[id].x_off))] = c;
 		}
@@ -84,9 +84,9 @@ void	to_sprite(t_mapdata *map, int m)
 		while (angle - ANGLE < -M_PI)
 			angle += 2 * M_PI;
 		SPRITES[k].size = ((float)g_tiles / SPRITES[k].dist * pplane_dist);
-		SPRITES[k].y_off = HT / 2.0f - SPRITES[k].size / 2;
+		SPRITES[k].y_off = HT / 2 - (int)(SPRITES[k].size / 2);
 		SPRITES[k].x_off = ((DEG(angle) - DEG(ANGLE)) * WH)
-		/ (float)32 + ((WH / 2.0f) - (SPRITES[k].size / 2));
+		/ (float)g_tiles + ((WH / 2.0f) - (int)(SPRITES[k].size / 2));
 		draw_sprite(map, k);
 	}
 }
