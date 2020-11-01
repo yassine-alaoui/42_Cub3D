@@ -10,6 +10,8 @@
 #                                                                              #
 # **************************************************************************** #
 
+
+#pls add the code srcs explicitly
 SRC = $(wildcard *.c)
 
 BONUS = $(wildcard *.o)

@@ -60,7 +60,7 @@ int		main(int argc, char **argv)
 	if (argc == 3)
 		((ft_strncmp(argv[2], "--save", 6) == 0)) ?
 			SCREEN = 1 : ft_error("wrong argument");
-	(argc == 2 || (argc == 3 && SCREEN == 1)) ? ft_intro(fd, map)
+	((argc == 2 &&  fd > 0)|| (argc == 3 && SCREEN == 1)) ? ft_intro(fd, map)
 		: ft_error("where is my map");
 	ANGLE = sean(map);
 	init_spt(map);

@@ -58,8 +58,8 @@ int		ft_iswall(t_mapdata *map)
 
 	if (PX < 0 || PY < 0)
 		return (1);
-	newy = (int)(PY + ((KEY_1) * sin(ANGLE) * 5)) / (g_tiles);
-	newx = (int)(PX + ((KEY_1) * cos(ANGLE) * 5)) / (g_tiles);
+	newy = (int)(PY + ((KEY_1) * sin(ANGLE) * 10)) / (g_tiles);
+	newx = (int)(PX + ((KEY_1) * cos(ANGLE) * 10)) / (g_tiles);
 	if (MAP2D[newy][newx] == '1' || MAP2D[newy][newx] == '2')
 		return (1);
 	return (0);
@@ -77,8 +77,8 @@ int		loop_me(t_mapdata *map)
 		ANGLE = ANGLE + ((KEY_0) * 0.06);
 	if (!ft_iswall(map) && KEY_S1 == 1)
 	{
-		PX = PX + (KEY_1 * cos(ANGLE) * 1 * 3);
-		PY = PY + (KEY_1 * sin(ANGLE) * 1 * 3);
+		PX = PX + (KEY_1 * cos(ANGLE) * 1 * 4);
+		PY = PY + (KEY_1 * sin(ANGLE) * 1 * 4);
 	}
 	mlx_clear_window(MLX, g_mlx_win);
 	ft_helpdrawasquare(map);
