@@ -44,6 +44,19 @@ void	mlx_stuff(t_mapdata *map)
 	mlx_loop(MLX);
 }
 
+int		ft_checkex(char *s)
+{
+	int	end;
+	int i;
+
+	i = 0;
+	end = ft_strlen(s) - 1;
+	if (s[end] == 'b' && s[end - 1] == 'u'
+		&& s[end - 2] == 'c' && s[end - 3] == '.')
+		return(1);
+	return(0);
+}
+
 int		main(int argc, char **argv)
 {
 	int			fd;
@@ -60,6 +73,7 @@ int		main(int argc, char **argv)
 	if (argc == 3)
 		((ft_strncmp(argv[2], "--save", 6) == 0)) ?
 			SCREEN = 1 : ft_error("wrong argument");
+	(ft_checkex(argv[1])) ?  0 : ft_error("wrong extension");
 	((argc == 2 &&  fd > 0)|| (argc == 3 && SCREEN == 1)) ? ft_intro(fd, map)
 		: ft_error("where is my map");
 	ANGLE = sean(map);
