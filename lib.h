@@ -25,6 +25,30 @@
 # include <string.h>
 # include <fcntl.h>
 
+typedef struct	s_lista
+{
+	double	dx;
+	double	dy;
+	double	x;
+	double	y;
+	double	faceup;
+	double	facedown;
+	double	faceright;
+	double	faceleft;
+	double	arc;
+	int		hitv;
+	int		hith;
+	double	wallx;
+	double	wally;
+	int		wallvy;
+	int		wallvx;
+	int		wallhx;
+	int		wallhy;
+	int		textnum;
+	int		*texturedata[4];
+	void	*textureimage;
+}				t_horizontal;
+
 typedef struct	s_prite
 {
 	float	x;
@@ -43,48 +67,49 @@ typedef struct	s_prite
 
 typedef struct	s_list
 {
-	int		width;
-	int		height;
-	int		floor[3];
-	int		keys0;
-	int		keyv0;
-	int		keys1;
-	int		keyv1;
-	int		view;
-	int		ceeling[3];
-	int		mapcheck;
-	int		size_line;
-	int		lol;
-	int		endian;
-	int		*mlxdata;
-	int		nhexfloor;
-	int		nhexceeling;
-	int		pp;
-	int		up;
-	int		down;
-	int		right;
-	int		left;
-	int		*raydist;
-	int		screen;
-	float	playerx;
-	float	playery;
-	float	wdis;
-	float	drota;
-	float	dwdx;
-	float	dwdy;
-	float	angle;
-	void	*mlximage;
-	void	*mlx;
-	char	*maponestr;
-	char	hexfloor[8];
-	char	hexceeling[8];
-	char	*north;
-	char	*south;
-	char	*west;
-	char	*east;
-	char	*sprite;
-	char	**map2d;
-	t_sprite	*sprites;
+	int				width;
+	int				height;
+	int				floor[3];
+	int				keys0;
+	int				keyv0;
+	int				keys1;
+	int				keyv1;
+	int				view;
+	int				ceeling[3];
+	int				mapcheck;
+	int				size_line;
+	int				lol;
+	int				endian;
+	int				*mlxdata;
+	int				nhexfloor;
+	int				nhexceeling;
+	int				pp;
+	int				up;
+	int				down;
+	int				right;
+	int				left;
+	int				*raydist;
+	int				screen;
+	float			playerx;
+	float			playery;
+	float			wdis;
+	float			drota;
+	float			dwdx;
+	float			dwdy;
+	float			angle;
+	void			*mlximage;
+	void			*mlx;
+	char			*maponestr;
+	char			hexfloor[8];
+	char			hexceeling[8];
+	char			*north;
+	char			*south;
+	char			*west;
+	char			*east;
+	char			*sprite;
+	char			**map2d;
+	t_sprite		*sprites;
+	t_horizontal	*it;
 }				t_mapdata;
 
 typedef struct	s_lst

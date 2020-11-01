@@ -15,30 +15,6 @@
 
 # include <stdint.h>
 
-typedef struct	s_lista
-{
-	double	dx;
-	double	dy;
-	double	x;
-	double	y;
-	double	faceup;
-	double	facedown;
-	double	faceright;
-	double	faceleft;
-	double	arc;
-	int		hitv;
-	int		hith;
-	double	wallx;
-	double	wally;
-	int		wallvy;
-	int		wallvx;
-	int		wallhx;
-	int		wallhy;
-	int		textnum;
-	int		*texturedata[4];
-	void	*textureimage;
-}				t_horizontal;
-
 typedef	struct	s_bmp_header
 {
 	char		bftype[3];

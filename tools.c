@@ -47,31 +47,10 @@ void	ft_drawasquare(int a, int b, t_mapdata *map)
 	}
 }
 
-void	ft_drawline(t_mapdata *map, float raylength, t_horizontal *it)
-{
-	int	j;
-
-	j = 0;
-	(void)raylength;
-	FUP = FCEUP;
-	FRIGHT = FCERIGHT;
-	FLEFT = FCELEFT;
-	FDOWN = FCEDOWN;
-	while (j <= raylength)
-	{
-		if (HV)
-			DATA[(int)(PY + sin(ARC) * j) * WH + (int)(PX + cos(ARC) * j)] = 0xff0000;
-		else if (HH)
-			DATA[(int)(PY + sin(ARC) * j) * WH + (int)(PX + cos(ARC) * j)] = 0x00ff00;
-		j++;
-	}
-}
-
 void	ft_drawaplayer(t_mapdata *map)
 {
 	double			theone;
 	int				i;
-	// static int		screen = 0;
 	t_horizontal	*it;
 
 	it = malloc(sizeof(t_horizontal));
@@ -79,7 +58,6 @@ void	ft_drawaplayer(t_mapdata *map)
 	i = 0;
 	ft_lstadd_front(&g_mylist, ft_lstnew(it));
 	ARC = ANGLE - (M_PI / 6);
-	// DATA[(int)(PY) * WH + (int)(PX)] = 0x00ff00;
 	texture(it, map);
 	while (i < WH)
 	{
@@ -90,7 +68,6 @@ void	ft_drawaplayer(t_mapdata *map)
 		theone = colmdist(map, it);
 		RAYDIST[i] = theone;
 		generete_wall(map, it, i, theone);
-		// ft_drawline(map, theone, it);
 		ARC += (M_PI / 3) / WH;
 		i++;
 	}

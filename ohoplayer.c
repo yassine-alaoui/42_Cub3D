@@ -13,10 +13,9 @@
 #include "lib.h"
 #include "ray.h"
 
-int		ft_quit(int key)
+int		ft_quit()
 {
-	if (key == 53)
-		ft_error("game over");
+	ft_error("game over");
 	return (0);
 }
 
@@ -70,7 +69,7 @@ int		loop_me(t_mapdata *map)
 {
 	mlx_hook(g_mlx_win, 2, 0, &key_pressed, map);
 	mlx_hook(g_mlx_win, 3, 0, &key_released, map);
-	mlx_hook(g_mlx_win, 17, 0, &ft_quit, map);
+	mlx_hook(g_mlx_win, 17, 0L, &ft_quit, map);
 	ANGLE = fmod(ANGLE, 2 * M_PI);
 	if (ANGLE < 0)
 		ANGLE += 2 * M_PI;
@@ -78,13 +77,10 @@ int		loop_me(t_mapdata *map)
 		ANGLE = ANGLE + ((KEY_0) * 0.06);
 	if (!ft_iswall(map) && KEY_S1 == 1)
 	{
-		PX = PX + (KEY_1 * cos(ANGLE) * 1 * ((WH > 1000 && HT > 700) ? 3 : 1));
-		PY = PY + (KEY_1 * sin(ANGLE) * 1) * ((WH > 1000 && HT > 700) ? 3 : 1);
+		PX = PX + (KEY_1 * cos(ANGLE) * 1 * 3);
+		PY = PY + (KEY_1 * sin(ANGLE) * 1 * 3);
 	}
 	mlx_clear_window(MLX, g_mlx_win);
-	// mlx_destroy_image(MLX, IMAGE);
-	// IMAGE = mlx_new_image(MLX, WH, HT);
-	// DATA = (int *)mlx_get_data_addr(IMAGE, &SIZELINE, &ENDIAN, &ENDIAN);
 	ft_helpdrawasquare(map);
 	mlx_put_image_to_window(MLX, g_mlx_win, IMAGE, 0, 0);
 	return (0);

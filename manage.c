@@ -34,11 +34,11 @@ void	ft_fetch(char *line, int *height, int *width, t_mapdata *map)
 		(ft_isdigit(line[i]) && !cond1 && !cond2) ? check++ : 0;
 	}
 	(!(line[1] == ' ')) ? ft_error("no space after R") : 0;
-	(check != 2) ? ft_error("wrong number of params") : 0;
+	(check != 2) ? ft_error("wrong number of R params") : 0;
 	HT = (*height > 1440) ? 1440 : *height;
-	HT = (*height < 100) ? 100 : *height;
+	(*height < 100) ? ft_error("height too small") : 0;
 	WH = (*width > 2560) ? 2560 : *width;
-	WH = (*width < 100) ? 100 : *width;
+	(*width < 100) ? ft_error("width too small") : 0;
 }
 
 int		ft_intlen(int num)

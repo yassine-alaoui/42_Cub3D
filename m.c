@@ -29,17 +29,17 @@ void	init(t_horizontal *it)
 
 void	mlx_stuff(t_mapdata *map)
 {
+	g_mlx_win = mlx_new_window(MLX, WH, HT, "CUB3D");
+	IMAGE = mlx_new_image(MLX, WH, HT);
+	DATA = (int *)mlx_get_data_addr(IMAGE, &SIZELINE, &ENDIAN, &ENDIAN);
+	ft_helpdrawasquare(map);
+	mlx_put_image_to_window(MLX, g_mlx_win, IMAGE, 0, 0);
 	if (SCREEN == 1)
 	{
 		save_bmp(map);
 		ft_lstclear(&g_mylist);
 		exit(1);
 	}
-	g_mlx_win = mlx_new_window(MLX, WH, HT, "CUB3D");
-	IMAGE = mlx_new_image(MLX, WH, HT);
-	DATA = (int *)mlx_get_data_addr(IMAGE, &SIZELINE, &ENDIAN, &ENDIAN);
-	ft_helpdrawasquare(map);
-	mlx_put_image_to_window(MLX, g_mlx_win, IMAGE, 0, 0);
 	mlx_loop_hook(MLX, &loop_me, map);
 	mlx_loop(MLX);
 }
