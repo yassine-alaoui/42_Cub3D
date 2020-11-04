@@ -24,7 +24,7 @@ $(NAME) :
 	gcc -Wall -Werror -Wextra -c $(SRC)
 	ar -rc  lib.a $(SRC:.c=.o)
 	ranlib lib.a
-	gcc -I /usr/local/include m.c lib.a -L /usr/local/lib/ -lmlx -framework OpenGL -framework AppKit -g -Ofast -o cub3D
+	gcc -I /usr/local/include m.c lib.a -L /usr/local/lib/ -lmlx -framework OpenGL -framework AppKit -Ofast -o cub3D
 
 bonus:
 	gcc -Wall -Werror -Wextra -c $(SRC) $(BONUS)

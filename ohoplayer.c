@@ -13,7 +13,7 @@
 #include "lib.h"
 #include "ray.h"
 
-int		ft_quit()
+int		ft_quit(void)
 {
 	ft_error("game over");
 	return (0);
@@ -77,8 +77,8 @@ int		loop_me(t_mapdata *map)
 		ANGLE = ANGLE + ((KEY_0) * 0.06);
 	if (!ft_iswall(map) && KEY_S1 == 1)
 	{
-		PX = PX + (KEY_1 * cos(ANGLE) * 1 * 4);
-		PY = PY + (KEY_1 * sin(ANGLE) * 1 * 4);
+		PX = PX + (KEY_1 * cos(ANGLE) * 1 * 10);
+		PY = PY + (KEY_1 * sin(ANGLE) * 1 * 10);
 	}
 	mlx_clear_window(MLX, g_mlx_win);
 	ft_helpdrawasquare(map);

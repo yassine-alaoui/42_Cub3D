@@ -21,12 +21,12 @@ int		wallconditions(t_mapdata *map, int *i, int *j)
 		if (MAP2D[*i][*j - 1] == ' ' || MAP2D[*i][*j + 1] == ' '
 			|| MAP2D[*i - 1][*j] == ' ' || MAP2D[*i + 1][*j] == ' ')
 			return (1);
-		if (MAP2D[*i - 1][*j - 1] == ' ' || MAP2D[*i + 1][*j + 1] == ' '
-			|| MAP2D[*i - 1][*j + 1] == ' ' || MAP2D[*i + 1][*j - 1] == ' ')
-			return (1);
-		if (MAP2D[*i - 1][*j - 1] == '\0' || MAP2D[*i + 1][*j + 1] == '\0'
-			|| MAP2D[*i - 1][*j + 1] == '\0' || MAP2D[*i + 1][*j - 1] == '\0')
-			return (1);
+		((MAP2D[*i - 1][*j - 1] == ' ')) ? MAP2D[*i - 1][*j - 1] = '1' : 0;
+		((MAP2D[*i + 1][*j + 1] == ' ')) ? MAP2D[*i + 1][*j + 1] = '1' : 0;
+		((MAP2D[*i + 1][*j + 1] == '\0')) ? MAP2D[*i + 1][*j + 1] = '1' : 0;
+		((MAP2D[*i - 1][*j + 1] == ' ')) ? MAP2D[*i - 1][*j + 1] = '1' : 0;
+		((MAP2D[*i - 1][*j + 1] == '\0')) ? MAP2D[*i - 1][*j + 1] = '1' : 0;
+		((MAP2D[*i + 1][*j - 1] == ' ')) ? MAP2D[*i + 1][*j - 1] = '1' : 0;
 		if (*j > (int)ft_strlen(MAP2D[*i - 1]) - 1 && !(MAP2D[*i - 1] == 0))
 			return (1);
 		if (*j > (int)ft_strlen(MAP2D[*i + 1]) - 1 && !(MAP2D[*i + 1] == 0))
@@ -72,10 +72,6 @@ int		helptreatingthatmap(char c)
 
 int		helpread(char *line, t_mapdata *map)
 {
-	if (line[ft_strlen(line) - 1] == '1' && LOL == 0)
-		LOL = 1;
-	if (LOL == 1 && line[ft_strlen(line) - 1] != '1')
-		ft_error("map isn't closed");
 	ft_matrix(map, line);
 	return (0);
 }

@@ -80,7 +80,7 @@ void	ft_read(int fd, t_mapdata *map)
 		ret = get_next_line(fd, &line);
 		if (line[0] == 'R' && line[1] == ' ' && (MCHECK++ || 1))
 			ft_fetch(line, &HT, &WH, map);
-		if ((line[0] == '1' || line[ft_strlen(line) - 1] == '1') && MCHECK < 8)
+		if ((line[0] == '1' || line[0] == ' ') && MCHECK < 8)
 			ft_error("map isn't last in the file");
 		if (MCHECK == 8)
 			if (helpread(line, map))
