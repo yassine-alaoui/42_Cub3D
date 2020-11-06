@@ -73,7 +73,9 @@ typedef struct	s_list
 	int				keys0;
 	int				keyv0;
 	int				keys1;
+	int				keys2;
 	int				keyv1;
+	int				keyv2;
 	int				view;
 	int				ceeling[3];
 	int				mapcheck;
@@ -142,10 +144,14 @@ typedef struct	s_lst
 # define ANGLE map->angle
 # define KEY_0 map->keyv0
 # define KEY_1 map->keyv1
+# define KEY_2 map->keyv2
 # define KEY_S0 map->keys0
 # define KEY_S1 map->keys1
+# define KEY_S2 map->keys2
 # define LEFT 124
+# define WLEFT 0
 # define RIGHT 123
+# define WRIGHT 2
 # define UP 13
 # define DOWN 1
 # define DRT map->drota
@@ -194,6 +200,7 @@ void			ft_fhexa(int nb, t_mapdata *map);
 void			ft_chexa(int nb, t_mapdata *map);
 void			to_sprite(t_mapdata *map, int m);
 void			hex(int hex);
+void			ft_small_check(char *line, t_mapdata *map);
 void			*g_mlx_win;
 int				ft_strncmp(const char *s1, const char *s2, size_t n);
 int				loop_me(t_mapdata *map);

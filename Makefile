@@ -10,8 +10,6 @@
 #                                                                              #
 # **************************************************************************** #
 
-
-#pls add the code srcs explicitly
 SRC = $(wildcard *.c)
 
 BONUS = $(wildcard *.o)
@@ -32,7 +30,7 @@ bonus:
 	ranlib lib.a
 
 clean:
-		rm -f $(SRC:.c=.o) $(BONUS:.c=.o)
+		rm -f $(SRC:.c=.o) $(BONUS:.c=.o) cub3D
 
 fclean:	clean
 		rm -f $(NAME)
