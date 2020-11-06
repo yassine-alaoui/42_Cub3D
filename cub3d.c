@@ -59,15 +59,13 @@ void	ft_init(t_mapdata *map)
 	PY = 0;
 	KEY_S1 = 0;
 	KEY_1 = 0;
+	KEY_2 = 0;
 	KEY_0 = 0;
 	KEY_S0 = 0;
+	KEY_S2 = 0;
 	LOL = 0;
 	PP = 0;
 	SCREEN = 0;
-	map->wdis = 0;
-	map->dwdx = sin(ANGLE) * map->wdis;
-	map->dwdy = cos(ANGLE) * map->wdis;
-	map->drota = 2 * (M_PI / 180);
 }
 
 void	ft_read(int fd, t_mapdata *map)
@@ -78,20 +76,12 @@ void	ft_read(int fd, t_mapdata *map)
 	while (1)
 	{
 		ret = get_next_line(fd, &line);
-		if (line[0] == 'R' && line[1] == ' ' && (MCHECK++ || 1))
-			ft_fetch(line, &HT, &WH, map);
 		if ((line[0] == '1' || line[0] == ' ') && MCHECK < 8)
 			ft_error("map isn't last in the file");
 		if (MCHECK == 8)
 			if (helpread(line, map))
 				continue;
-		(line[0] == 'N' && line[1] == 'O') ? ft_north(map, line) : 0;
-		(line[0] == 'S' && line[1] == 'O') ? ft_south(map, line) : 0;
-		(line[0] == 'W' && line[1] == 'E') ? ft_west(map, line) : 0;
-		(line[0] == 'E' && line[1] == 'A') ? ft_east(map, line) : 0;
-		(line[0] == 'S' && line[1] == ' ') ? ft_sprite(map, line) : 0;
-		(line[0] == 'F' && line[1] == ' ') ? ft_floor(map, line) : 0;
-		(line[0] == 'C' && line[1] == ' ') ? ft_ceeling(map, line) : 0;
+		ft_small_check(line, map);
 		free(line);
 		if (ret == 0)
 			break ;

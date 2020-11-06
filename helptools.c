@@ -13,6 +13,28 @@
 #include "lib.h"
 #include "ray.h"
 
+void	ft_small_check(char *line, t_mapdata *map)
+{
+	if (line[0] == 'R' && line[1] == ' ' && (MCHECK++ || 1))
+		ft_fetch(line, &HT, &WH, map);
+	else if (line[0] == 'N' && line[1] == 'O')
+		ft_north(map, line);
+	else if (line[0] == 'S' && line[1] == 'O')
+		ft_south(map, line);
+	else if (line[0] == 'W' && line[1] == 'E')
+		ft_west(map, line);
+	else if (line[0] == 'E' && line[1] == 'A')
+		ft_east(map, line);
+	else if (line[0] == 'S' && line[1] == ' ')
+		ft_sprite(map, line);
+	else if (line[0] == 'F' && line[1] == ' ')
+		ft_floor(map, line);
+	else if (line[0] == 'C' && line[1] == ' ')
+		ft_ceeling(map, line);
+	else if (line[0] != '\0' && MCHECK < 8)
+		ft_error("there is a none empty line");
+}
+
 int		ft_strncmp(const char *s1, const char *s2, size_t n)
 {
 	size_t i;

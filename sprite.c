@@ -109,10 +109,10 @@ void	init_spt(t_mapdata *map)
 	if (!(SPRITES = malloc(sizeof(t_sprite) * (g_count + 1))))
 		ft_error("");
 	ft_lstadd_front(&g_mylist, ft_lstnew(SPRITES));
-	SPRITES->simg = mlx_xpm_file_to_image(MLX, S, &SH, &SW);
+	(SPRITES->simg = mlx_xpm_file_to_image(MLX, S, &SH, &SW)) ==
+		0 ? ft_error("wrong sprite extension") : 0;
 	SPRITES->sdata = (int *)mlx_get_data_addr(SPRITES->simg, &DT, &DT1, &DT1);
 	while (MAP2D[++i] != 0 && (j = -1) && (k < g_count))
-	{
 		while (MAP2D[i][++j] != 0 && (k < g_count))
 		{
 			if (MAP2D[i][j] == '2')
@@ -124,5 +124,4 @@ void	init_spt(t_mapdata *map)
 				k++;
 			}
 		}
-	}
 }
