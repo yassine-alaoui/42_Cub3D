@@ -32,6 +32,7 @@ void	mlx_stuff(t_mapdata *map)
 	g_mlx_win = mlx_new_window(MLX, WH, HT, "CUB3D");
 	IMAGE = mlx_new_image(MLX, WH, HT);
 	DATA = (int *)mlx_get_data_addr(IMAGE, &SIZELINE, &ENDIAN, &ENDIAN);
+	init_spt(map);
 	ft_helpdrawasquare(map);
 	mlx_put_image_to_window(MLX, g_mlx_win, IMAGE, 0, 0);
 	if (SCREEN == 1)
@@ -77,6 +78,5 @@ int		main(int argc, char **argv)
 		: ft_error("where is my map");
 	(ft_checkex(argv[1])) ? 0 : ft_error("wrong extension");
 	ANGLE = sean(map);
-	init_spt(map);
 	mlx_stuff(map);
 }

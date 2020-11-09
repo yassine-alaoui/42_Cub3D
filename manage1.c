@@ -57,10 +57,12 @@ void	ft_floor(t_mapdata *map, char *line)
 	MCHECK++;
 	if (line[i] == 'F' && line[i + 1] != ' ')
 		ft_error("Something is wrong with the path F");
-	else
+	i++;
+	while (line[i] == ' ')
 		i++;
 	while (line[i])
 	{
+		printf("%c\n", line[i]);
 		if (ft_isdigit(line[i]))
 		{
 			F[j] = ft_atoi(line + i);

@@ -34,7 +34,7 @@ static void		head_make(t_bmp_file *info_bmp_file, t_mapdata *map)
 	info_bmp_file->bfoffbits = 0x36;
 	info_bmp_file->bisize = 40;
 	info_bmp_file->biwidth = WH;
-	info_bmp_file->biheight = -HT;
+	info_bmp_file->biheight = HT * -1;
 	info_bmp_file->biplanes = 1;
 	info_bmp_file->bibitcount = 32;
 	info_bmp_file->bicompression = 0;

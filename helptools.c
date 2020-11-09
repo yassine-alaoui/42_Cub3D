@@ -13,7 +13,7 @@
 #include "lib.h"
 #include "ray.h"
 
-void	ft_small_check(char *line, t_mapdata *map)
+void	ft_small_check(char *line, t_mapdata *map, int notmap)
 {
 	if (line[0] == 'R' && line[1] == ' ' && (MCHECK++ || 1))
 		ft_fetch(line, &HT, &WH, map);
@@ -33,6 +33,8 @@ void	ft_small_check(char *line, t_mapdata *map)
 		ft_ceeling(map, line);
 	else if (line[0] != '\0' && MCHECK < 8)
 		ft_error("there is a none empty line");
+	else if (line[0] != ' ' && line[0] != '1' && MCHECK == 8 && !notmap)
+		ft_error("something is wrong with the map");
 }
 
 int		ft_strncmp(const char *s1, const char *s2, size_t n)

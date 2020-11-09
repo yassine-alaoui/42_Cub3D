@@ -21,15 +21,6 @@ int		wallconditions(t_mapdata *map, int *i, int *j)
 		if (MAP2D[*i][*j - 1] == ' ' || MAP2D[*i][*j + 1] == ' '
 			|| MAP2D[*i - 1][*j] == ' ' || MAP2D[*i + 1][*j] == ' ')
 			return (1);
-		if (*i == 1 && *i == g_rows)
-		{
-			((MAP2D[*i - 1][*j - 1] == ' ')) ? MAP2D[*i - 1][*j - 1] = '1' : 0;
-			((MAP2D[*i + 1][*j + 1] == ' ')) ? MAP2D[*i + 1][*j + 1] = '1' : 0;
-			((MAP2D[*i + 1][*j + 1] == '\0')) ? MAP2D[*i + 1][*j + 1] = '1' : 0;
-			((MAP2D[*i - 1][*j + 1] == ' ')) ? MAP2D[*i - 1][*j + 1] = '1' : 0;
-			((MAP2D[*i - 1][*j + 1] == '\0')) ? MAP2D[*i - 1][*j + 1] = '1' : 0;
-			((MAP2D[*i + 1][*j - 1] == ' ')) ? MAP2D[*i + 1][*j - 1] = '1' : 0;
-		}
 		if (*j > (int)ft_strlen(MAP2D[*i - 1]) - 1 && !(MAP2D[*i - 1] == 0))
 			return (1);
 		if (*j > (int)ft_strlen(MAP2D[*i + 1]) - 1 && !(MAP2D[*i + 1] == 0))
@@ -57,7 +48,7 @@ void	continuetreatingthatmap(t_mapdata *map)
 				g_count++;
 			if (i == 0 || i == g_rows - 1)
 				if (MAP2D[i][j] != '1' && MAP2D[i][j] != ' ')
-					ft_error("map extreems  aren't closed");
+					ft_error("map extreems  aren't closed,");
 			if (wallconditions(map, &i, &j))
 				ft_error("map isn't closed");
 		}

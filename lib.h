@@ -200,7 +200,7 @@ void			ft_fhexa(int nb, t_mapdata *map);
 void			ft_chexa(int nb, t_mapdata *map);
 void			to_sprite(t_mapdata *map, int m);
 void			hex(int hex);
-void			ft_small_check(char *line, t_mapdata *map);
+void			ft_small_check(char *line, t_mapdata *map, int notmap);
 void			*g_mlx_win;
 int				ft_strncmp(const char *s1, const char *s2, size_t n);
 int				loop_me(t_mapdata *map);

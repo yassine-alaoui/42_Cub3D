@@ -72,16 +72,22 @@ void	ft_read(int fd, t_mapdata *map)
 {
 	char		*line;
 	int			ret;
+	static int	notmap = 1;
 
 	while (1)
 	{
 		ret = get_next_line(fd, &line);
 		if ((line[0] == '1' || line[0] == ' ') && MCHECK < 8)
 			ft_error("map isn't last in the file");
-		if (MCHECK == 8)
+		if (MCHECK == 8 && (line[0] == ' ' || line[0] == '1')
+			&& notmap == 1)
+			notmap = 0;
+		if (MCHECK == 8 && line[0] != '\0' && notmap == 1)
+			ft_error("not an empty line");
+		ft_small_check(line, map, notmap);
+		if (MCHECK == 8 && notmap == 0)
 			if (helpread(line, map))
 				continue;
-		ft_small_check(line, map);
 		free(line);
 		if (ret == 0)
 			break ;
