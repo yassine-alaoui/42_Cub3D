@@ -22,7 +22,6 @@ void	draw_sprite(t_mapdata *map, int id)
 
 	i = -1;
 	size = SPRITES[id].size;
-	SPRITES[id].y_off = (size == WH) ? 0 : SPRITES[id].y_off;
 	while (++i < size - 1)
 	{
 		if (SPRITES[id].x_off + i <= 0 || SPRITES[id].x_off + i >= WH)
@@ -39,7 +38,6 @@ void	draw_sprite(t_mapdata *map, int id)
 			if (c != SPRITES->sdata[0])
 				DATA[(int)((j + SPRITES[id].y_off) *
 				WH + (i + SPRITES[id].x_off))] = c;
-			// printf("y_off = %f x_off = %f size = %f\n", SPRITES[id].y_off, SPRITES[id].x_off, size);
 		}
 	}
 }
@@ -96,6 +94,7 @@ void	to_sprite(t_mapdata *map, int m)
 		SPRITES[k].y_off = HT / 2 - (int)SPRITES[k].size / 2;
 		SPRITES[k].x_off = ((DEG(angle) - DEG(ANGLE)) * WH)
 		/ (float)g_tiles + ((WH / 2.0f) - (int)SPRITES[k].size / 2.0f);
+		// printf("y_off = %f x_off = %f size = %f\n", SPRITES[k].y_off, SPRITES[k].x_off, SPRITES[k].size);
 		draw_sprite(map, k);
 	}
 }
