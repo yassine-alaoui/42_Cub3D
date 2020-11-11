@@ -70,8 +70,9 @@ void	ft_floor(t_mapdata *map, char *line)
 				: ft_error("it's the wrong F number");
 			j++;
 		}
-		(line[i] == ' ' || line[i] == ',' ||
-			ft_isdigit(line[i])) ? 0 : ft_error("not a valid F color");
+		(line[i] == ' ' || (line[i] == ',' && ft_isdigit(line[i + 1]) &&
+			ft_isdigit(line[i - 1])) || ft_isdigit(line[i])) ? 0 :
+				ft_error("not a valid F color");
 		i++;
 	}
 	HEXF = (F[0] << 16) | (F[1] << 8) | F[2];
@@ -99,8 +100,9 @@ void	ft_ceeling(t_mapdata *map, char *line)
 				: ft_error("it's the wrong C number");
 			j++;
 		}
-		(line[i] == ' ' || line[i] == ',' ||
-			ft_isdigit(line[i])) ? 0 : ft_error("not a valid C color");
+		(line[i] == ' ' || (line[i] == ',' && ft_isdigit(line[i + 1]) &&
+			ft_isdigit(line[i - 1])) || ft_isdigit(line[i])) ? 0 :
+				ft_error("not a valid C color");
 		i++;
 	}
 	HEXC = (C[0] << 16) | (C[1] << 8) | C[2];
