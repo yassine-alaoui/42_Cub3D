@@ -1,4 +1,4 @@
-R 1000 1000
+R 3000 3000
 
 NO ./textures.64/grey-brick.xpm
 SO ./textures.64/art-on-wall.xpm

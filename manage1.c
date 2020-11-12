@@ -6,7 +6,7 @@
 /*   By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/12 15:29:30 by yaalaoui          #+#    #+#             */
-/*   Updated: 2020/10/27 18:04:14 by yaalaoui         ###   ########.fr       */
+/*   Updated: 2020/11/12 14:34:59 by yaalaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,7 @@ void	ft_floor(t_mapdata *map, char *line)
 	MCHECK++;
 	if (line[i] == 'F' && line[i + 1] != ' ')
 		ft_error("Something is wrong with the path F");
-	i++;
-	while (line[i] == ' ')
+	while (line[i] == ' ' || (line[i - 1] != ' ' && line[i] == 'F'))
 		i++;
 	while (line[i])
 	{
@@ -76,8 +75,7 @@ void	ft_floor(t_mapdata *map, char *line)
 		i++;
 	}
 	HEXF = (F[0] << 16) | (F[1] << 8) | F[2];
-	if (j != 3)
-		ft_error("not a valid F color");
+	(j != 3) ? ft_error("not a valid F color") : 0;
 }
 
 void	ft_ceeling(t_mapdata *map, char *line)
@@ -88,7 +86,7 @@ void	ft_ceeling(t_mapdata *map, char *line)
 	MCHECK++;
 	if (line[i] == 'C' && line[i + 1] != ' ')
 		ft_error("Something is wrong with the path C");
-	else
+	while (line[i] == ' ' || (line[i - 1] != ' ' && line[i] == 'C'))
 		i++;
 	while (line[i])
 	{
@@ -106,8 +104,7 @@ void	ft_ceeling(t_mapdata *map, char *line)
 		i++;
 	}
 	HEXC = (C[0] << 16) | (C[1] << 8) | C[2];
-	if (j != 3)
-		ft_error("not a valid C color");
+	(j != 3) ? ft_error("not a valid C color") : 0;
 }
 
 void	ft_intro(int fd, t_mapdata *map)

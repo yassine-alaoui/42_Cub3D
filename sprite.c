@@ -6,7 +6,7 @@
 /*   By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/23 14:34:09 by yaalaoui          #+#    #+#             */
-/*   Updated: 2020/10/28 19:14:57 by yaalaoui         ###   ########.fr       */
+/*   Updated: 2020/11/12 14:05:21 by yaalaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,6 @@ void	init_spt(t_mapdata *map)
 	SPRITES->sdata = (int *)mlx_get_data_addr(SPRITES->simg, &DT, &DT1, &DT1);
 	while (MAP2D[++i] != 0 && (j = -1) && (k < g_count))
 		while (MAP2D[i][++j] != 0 && (k < g_count))
-		{
 			if (MAP2D[i][j] == '2')
 			{
 				SPRITES[k].x_off = 0;
@@ -126,5 +125,4 @@ void	init_spt(t_mapdata *map)
 					- PX) + ((SPRITES[k].y) - PY) * ((SPRITES[k].y) - PY));
 				k++;
 			}
-		}
 }

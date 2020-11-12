@@ -6,7 +6,7 @@
 /*   By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/12 20:02:34 by yaalaoui          #+#    #+#             */
-/*   Updated: 2020/10/28 19:11:01 by yaalaoui         ###   ########.fr       */
+/*   Updated: 2020/11/12 14:04:20 by yaalaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,16 @@ void	init(t_horizontal *it)
 
 void	mlx_stuff(t_mapdata *map)
 {
+	static int c = 0;
+
 	g_mlx_win = mlx_new_window(MLX, WH, HT, "CUB3D");
 	IMAGE = mlx_new_image(MLX, WH, HT);
 	DATA = (int *)mlx_get_data_addr(IMAGE, &SIZELINE, &ENDIAN, &ENDIAN);
-	init_spt(map);
+	if (c == 0)
+	{
+		init_spt(map);
+		c = 1;
+	}
 	ft_helpdrawasquare(map);
 	mlx_put_image_to_window(MLX, g_mlx_win, IMAGE, 0, 0);
 	if (SCREEN == 1)
