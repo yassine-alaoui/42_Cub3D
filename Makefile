@@ -6,7 +6,7 @@
 #    By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/14 18:43:39 by yaalaoui          #+#    #+#              #
-#    Updated: 2020/02/14 18:47:06 by yaalaoui         ###   ########.fr        #
+#    Updated: 2020/11/15 17:22:21 by yaalaoui         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ $(NAME) :
 	gcc -Wall -Werror -Wextra -c $(SRC)
 	ar -rc  lib.a $(SRC:.c=.o)
 	ranlib lib.a
-	gcc -I /usr/local/include lib.a -L /usr/local/lib/ -lmlx -framework OpenGL -framework AppKit -Ofast -o cub3D -fsanitize=address
+	gcc -I /usr/local/include lib.a -L /usr/local/lib/ -lmlx -framework OpenGL -framework AppKit -Ofast -o cub3D
 
 bonus:
 	gcc -Wall -Werror -Wextra -c $(SRC) $(BONUS)

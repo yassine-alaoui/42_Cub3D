@@ -6,7 +6,7 @@
 /*   By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 20:04:59 by yaalaoui          #+#    #+#             */
-/*   Updated: 2020/10/22 18:33:44 by yaalaoui         ###   ########.fr       */
+/*   Updated: 2020/11/18 13:12:32 by yaalaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,33 @@
 #include <stdio.h>
 #include <string.h>
 #include "ray.h"
+
+void	map_manager(t_mapdata *map)
+{
+	int		i;
+	int		j;
+
+	i = -1;
+	MAP2D = (char**)malloc((g_rows + 1) * sizeof(char*));
+	while (++i < g_rows)
+		MAP2D[i] = (char*)malloc((PP + 1) * sizeof(char));
+	MAP2D[i] = NULL;
+	i = -1;
+	while (++i < g_rows)
+	{
+		j = 0;
+		while (j < PP)
+		{
+			if (j < (int)ft_strlen(MAP2DB[i]))
+				MAP2D[i][j] = MAP2DB[i][j];
+			else
+				MAP2D[i][j] = ' ';
+			j++;
+		}
+		MAP2D[i][j] = '\0';
+	}
+	i = 0;
+}
 
 int		get_next_line(int fd, char **line)
 {

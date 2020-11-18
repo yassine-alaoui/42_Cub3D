@@ -6,7 +6,7 @@
 /*   By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/12 15:29:30 by yaalaoui          #+#    #+#             */
-/*   Updated: 2020/11/12 14:34:59 by yaalaoui         ###   ########.fr       */
+/*   Updated: 2020/11/18 13:12:51 by yaalaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,8 +114,11 @@ void	ft_intro(int fd, t_mapdata *map)
 	ft_read(fd, map);
 	if (MCHECK != 8)
 		ft_error("something is miss stated");
-	MAP2D = ft_split(MAP0, '\n');
+	if (!MAP2DB)
+		MAP2DB = ft_split(MAP0, '\n');
 	g_rows = count_words(MAP0, '\n');
+	if (!MAP2D)
+		map_manager(map);
 	ft_lstadd_front(&g_mylist, ft_lstnew(MAP0));
 	ft_lstadd_front(&g_mylist, ft_lstnew((MAP2D)));
 	treatthatmap(map);

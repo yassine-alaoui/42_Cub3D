@@ -6,7 +6,7 @@
 /*   By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/23 03:54:40 by yaalaoui          #+#    #+#             */
-/*   Updated: 2020/10/28 18:43:13 by yaalaoui         ###   ########.fr       */
+/*   Updated: 2020/11/18 13:50:34 by yaalaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,25 +77,30 @@ int		key_pressed(int key, t_mapdata *map)
 
 void	ft_movewasd(t_mapdata *map)
 {
-	if ((MAP2D[(int)(PY + (KEY_1 * sin(ANGLE) * 8))
-		/ (g_tiles)][(int)PX / (g_tiles)] != '1') &&
-			MAP2D[(int)(PY + (KEY_1 * sin(ANGLE) * 8))
-				/ (g_tiles)][(int)PX / (g_tiles)] != '2')
-		if (MAP2D[(int)(PY + (KEY_2 * sin(ANGLE + RAD(90)) * 8)) / (g_tiles)]
-			[(int)PX / (g_tiles)] != '1' && MAP2D[(int)(PY + (KEY_2 * sin(ANGLE
-				+ RAD(90)) * 8)) / (g_tiles)][(int)PX / (g_tiles)] != '1' &&
-					((KEY_S2 == 1) || (KEY_S1 == 1)))
-			PY = PY + (KEY_1 * sin(ANGLE) * 8) + (KEY_2 *
-				sin(ANGLE + RAD(90)) * 8);
-	if ((MAP2D[(int)PY / (g_tiles)][(int)(PX + (KEY_1 * cos(ANGLE) * 8)) /
-		(g_tiles)] != '1') && (MAP2D[(int)PY / (g_tiles)][(int)(PX +
-			(KEY_1 * cos(ANGLE) * 8)) / (g_tiles)] != '2'))
-		if (MAP2D[(int)PY / (g_tiles)][(int)(PX + (KEY_2 * cos(ANGLE + RAD(90))
-			* 8)) / (g_tiles)] != '1' && MAP2D[(int)PY / (g_tiles)][(int)(PX +
-				(KEY_2 * cos(ANGLE + RAD(90)) * 8)) / (g_tiles)] != '2' &&
-					((KEY_S2 == 1) || (KEY_S1 == 1)))
-			PX = PX + (KEY_1 * cos(ANGLE) * 8) +
-				(KEY_2 * cos(ANGLE + RAD(90)) * 8);
+	int x;
+	int y;
+	int x1;
+	int y1;
+	int t;
+
+	t = g_tiles;
+	y = MAP2D[(int)(PY + (KEY_1 * sin(ANGLE) * 8)) / (t)][(int)PX / (t)];
+	y1 = MAP2D[(int)(PY + (KEY_2 * sin(RAD(ANGLE + 90)) * 8))
+	/ (t)][(int)PX / (t)];
+	x = MAP2D[(int)PY / (t)][(int)(PX + (KEY_1 * cos(ANGLE) * 8)) / (t)];
+	x1 = MAP2D[(int)PY / (t)][(int)(PX + (KEY_2
+	* cos(RAD(ANGLE + 90)) * 8)) / (t)];
+	ANGLE = fmod(ANGLE, 2 * M_PI);
+	if (ANGLE < 0)
+		ANGLE += 2 * M_PI;
+	if (KEY_S0)
+		ANGLE = ANGLE + (KEY_0 * 0.05);
+	if (y != '1' && y != '2' && y1 != '1' && y1 != '2')
+		PY = PY + (KEY_1 * sin(ANGLE) * 4) +
+			(KEY_2 * sin(RAD(ANGLE + 90)) * 2);
+	if (x != '1' && x != '2' && x1 != '1' && x1 != '2')
+		PX = PX + (KEY_1 * cos(ANGLE) * 4) +
+			(KEY_2 * cos(RAD(ANGLE + 90)) * 2);
 }
 
 int		loop_me(t_mapdata *map)
