@@ -6,7 +6,7 @@
 /*   By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/23 03:54:40 by yaalaoui          #+#    #+#             */
-/*   Updated: 2020/11/18 18:34:15 by yaalaoui         ###   ########.fr       */
+/*   Updated: 2020/11/19 11:39:07 by yaalaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,8 +114,8 @@ int		loop_me(t_mapdata *map)
 	if (KEY_S0 == 1)
 		ANGLE = ANGLE + ((KEY_0) * 0.06);
 	ft_movewasd(map);
-	mlx_clear_window(MLX, g_mlx_win);
 	ft_helpdrawasquare(map);
+	mlx_clear_window(MLX, g_mlx_win);
 	mlx_put_image_to_window(MLX, g_mlx_win, IMAGE, 0, 0);
 	return (0);
 }
