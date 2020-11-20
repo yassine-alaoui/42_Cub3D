@@ -6,7 +6,7 @@
 /*   By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/12 20:02:34 by yaalaoui          #+#    #+#             */
-/*   Updated: 2020/11/12 14:04:20 by yaalaoui         ###   ########.fr       */
+/*   Updated: 2020/11/20 11:53:07 by yaalaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,8 @@ int		main(int argc, char **argv)
 	((argc == 2 && fd > 0) || (argc == 3 && SCREEN == 1)) ? ft_intro(fd, map)
 		: ft_error("where is my map");
 	(ft_checkex(argv[1])) ? 0 : ft_error("wrong extension");
+	texture(map);
 	ANGLE = sean(map);
 	mlx_stuff(map);
+	ft_lstclear(&g_mylist);
 }

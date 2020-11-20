@@ -6,7 +6,7 @@
 /*   By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/23 14:34:09 by yaalaoui          #+#    #+#             */
-/*   Updated: 2020/11/12 14:05:21 by yaalaoui         ###   ########.fr       */
+/*   Updated: 2020/11/20 11:27:37 by yaalaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,10 +87,7 @@ void	to_sprite(t_mapdata *map, int m)
 			angle -= 2 * M_PI;
 		while (angle - ANGLE < -M_PI)
 			angle += 2 * M_PI;
-		if (HT > WH)
-			SPRITES[k].size = (HT / SPRITES[k].dist) * g_tiles;
-		else
-			SPRITES[k].size = (WH / SPRITES[k].dist) * g_tiles;
+		SPRITES[k].size = (WH / SPRITES[k].dist) * g_tiles;
 		SPRITES[k].y_off = HT / 2 - (int)SPRITES[k].size / 2;
 		SPRITES[k].x_off = ((DEG(angle) - DEG(ANGLE)) * WH)
 		/ (float)g_tiles + ((WH / 2.0f) - (int)SPRITES[k].size / 2.0f);

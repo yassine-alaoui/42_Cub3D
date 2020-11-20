@@ -6,7 +6,7 @@
 /*   By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 00:32:04 by yaalaoui          #+#    #+#             */
-/*   Updated: 2020/10/28 19:09:58 by yaalaoui         ###   ########.fr       */
+/*   Updated: 2020/11/20 11:50:37 by yaalaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,6 @@ typedef struct	s_lista
 	int		wallhx;
 	int		wallhy;
 	int		textnum;
-	int		*texturedata[4];
-	void	*textureimage;
 }				t_horizontal;
 
 typedef struct	s_prite
@@ -110,8 +108,11 @@ typedef struct	s_list
 	char			*east;
 	char			*sprite;
 	char			**map2d;
+	char			**map2dbefore;
 	t_sprite		*sprites;
 	t_horizontal	*it;
+	int				*texturedata[4];
+	void			*textureimage;
 }				t_mapdata;
 
 typedef struct	s_lst
@@ -132,6 +133,7 @@ typedef struct	s_lst
 # define PP map->pp
 # define MAP0 map->maponestr
 # define MAP2D map->map2d
+# define MAP2DB map->map2dbefore
 # define MCHECK map->mapcheck
 # define PX map->playerx
 # define PY map->playery
@@ -170,6 +172,8 @@ typedef struct	s_lst
 # define RAYDIST map->raydist
 # define SCREEN map->screen
 # define SPRITES map->sprites
+# define TXTIMG map->textureimage
+# define TXTDATA map->texturedata
 
 # define RAD(x) (x * (M_PI / 180))
 # define DEG(x) ((180 / M_PI) * x)
@@ -224,6 +228,8 @@ char			*ft_substr(char const *dst, unsigned int start, size_t len);
 char			*ft_strchr(const char *s, int c);
 char			*ft_strjoin(char *s1, char *s2);
 char			**ft_split(char const *s, char c);
+char			*ft_substr(char const *s, unsigned int start, size_t len);
+void			map_manager(t_mapdata *map);
 float			sean(t_mapdata *map);
 t_list			*ft_lstnew(void *content);
 t_list			*g_mylist;

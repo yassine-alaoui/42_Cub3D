@@ -6,7 +6,7 @@
 /*   By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 18:18:10 by yaalaoui          #+#    #+#             */
-/*   Updated: 2020/10/28 19:09:10 by yaalaoui         ###   ########.fr       */
+/*   Updated: 2020/11/20 11:52:36 by yaalaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,6 @@ typedef	struct	s_bmp_header
 # define ARC it->arc
 # define HH it->hith
 # define HV it->hitv
-# define TXTIMG it->textureimage
-# define TXTDATA it->texturedata
 # define TXTNUM it->textnum
 # define SH map->sprites[k].height
 # define SW map->sprites[k].width
@@ -71,7 +69,7 @@ void			ft_helpdrawasquare(t_mapdata *map);
 void			picktxt(t_horizontal *it);
 void			ft_drawaplayer(t_mapdata *map);
 void			save_bmp(t_mapdata *map);
-void			texture(t_horizontal *it, t_mapdata *map);
+void			texture(t_mapdata *map);
 double			ft_horizontal(t_mapdata *map, t_horizontal *it);
 double			ft_vertical(t_mapdata *map, t_horizontal *it);
 double			colmdist(t_mapdata *map, t_horizontal *it);

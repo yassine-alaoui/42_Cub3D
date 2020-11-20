@@ -6,7 +6,7 @@
 /*   By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/18 20:40:11 by yaalaoui          #+#    #+#             */
-/*   Updated: 2020/11/12 14:39:09 by yaalaoui         ###   ########.fr       */
+/*   Updated: 2020/11/20 11:52:08 by yaalaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	picktxt(t_horizontal *it)
 		TXTNUM = 0;
 }
 
-void	texture(t_horizontal *it, t_mapdata *map)
+void	texture(t_mapdata *map)
 {
 	int	usless;
 	int uslesser;
