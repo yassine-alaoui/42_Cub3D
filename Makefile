@@ -6,13 +6,13 @@
 #    By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/14 18:43:39 by yaalaoui          #+#    #+#              #
-#    Updated: 2020/11/16 12:35:57 by yaalaoui         ###   ########.fr        #
+#    Updated: 2020/11/20 14:35:31 by yaalaoui         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRC = cub3d.c ft_strtrim.c get_next_line_utils.c m.c manage1.c mapstuff.c screenshot.c tools.c buildwall.c ft_split.c get_next_line.c helptools.c lil.c manage.c ohoplayer.c raycats.c sprite.c textures.c
 
-BONUS = $(SRC:.c=.o)
+BONUS = $(SRC)
 
 NAME = lib.a
 
@@ -26,7 +26,7 @@ $(NAME) :
 
 bonus:
 	gcc -Wall -Werror -Wextra -c $(SRC) $(BONUS)
-	ar -rc  lib.a $(SRC:.c=.o) $(BONUS:.c=.o)
+	ar -rc  lib.a $(SRC:.c=.o)
 	ranlib lib.a
 
 clean:

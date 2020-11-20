@@ -6,7 +6,7 @@
 /*   By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:32:53 by yaalaoui          #+#    #+#             */
-/*   Updated: 2020/11/20 11:51:44 by yaalaoui         ###   ########.fr       */
+/*   Updated: 2020/11/20 14:33:14 by yaalaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,10 @@ void	ft_drawasquare(int a, int b, t_mapdata *map)
 
 void	ft_drawaplayer(t_mapdata *map)
 {
-	double			theone;
 	int				i;
 	t_horizontal	*it;
 	t_horizontal	*tmp;
 
-	tmp = 0;
 	it = 0;
 	tmp = it;
 	it = malloc(sizeof(t_horizontal));
@@ -68,9 +66,8 @@ void	ft_drawaplayer(t_mapdata *map)
 			ARC += 2 * M_PI;
 		if (ARC > M_PI * 2)
 			ARC -= (M_PI * 2);
-		theone = colmdist(map, it);
-		RAYDIST[i] = theone;
-		generete_wall(map, it, i, theone);
+		RAYDIST[i] = colmdist(map, it);
+		generete_wall(map, it, i, RAYDIST[i]);
 		ARC += (M_PI / 3) / WH;
 		i++;
 	}
