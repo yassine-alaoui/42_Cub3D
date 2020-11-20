@@ -6,7 +6,7 @@
 /*   By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/12 21:33:27 by yaalaoui          #+#    #+#             */
-/*   Updated: 2020/11/18 13:38:04 by yaalaoui         ###   ########.fr       */
+/*   Updated: 2020/10/28 17:00:10 by yaalaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,10 @@ int		wallconditions(t_mapdata *map, int *i, int *j)
 	{
 		if (MAP2D[*i][*j - 1] == ' ' || MAP2D[*i][*j + 1] == ' '
 			|| MAP2D[*i - 1][*j] == ' ' || MAP2D[*i + 1][*j] == ' ')
+			return (1);
+		if (*j > (int)ft_strlen(MAP2D[*i - 1]) - 1 && !(MAP2D[*i - 1] == 0))
+			return (1);
+		if (*j > (int)ft_strlen(MAP2D[*i + 1]) - 1 && !(MAP2D[*i + 1] == 0))
 			return (1);
 	}
 	return (0);
@@ -45,6 +49,8 @@ void	continuetreatingthatmap(t_mapdata *map)
 			if (i == 0 || i == g_rows - 1)
 				if (MAP2D[i][j] != '1' && MAP2D[i][j] != ' ')
 					ft_error("map extreems  aren't closed,");
+			if (wallconditions(map, &i, &j))
+				ft_error("map isn't closed");
 		}
 	}
 }
@@ -74,6 +80,7 @@ void	treatthatmap(t_mapdata *map)
 	while (MAP2D[++i])
 	{
 		j = -1;
+		(PP < (int)ft_strlen(MAP2D[i])) ? PP = (int)ft_strlen(MAP2D[i]) : PP;
 		while (MAP2D[i][++j])
 		{
 			if ((MAP2D[i][j] == 'N' || MAP2D[i][j] == 'W'
@@ -87,7 +94,6 @@ void	treatthatmap(t_mapdata *map)
 				ft_error("multiplayer game");
 			if (!helptreatingthatmap(MAP2D[i][j]))
 				ft_error("wrong character");
-			(wallconditions(map, &i, &j)) ? ft_error("map isn't closed") : 0;
 		}
 	}
 	(p == 0) ? ft_error("there's no player") : 0;

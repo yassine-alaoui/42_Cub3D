@@ -6,7 +6,11 @@
 /*   By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/23 03:54:40 by yaalaoui          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2020/11/19 11:39:07 by yaalaoui         ###   ########.fr       */
+=======
+/*   Updated: 2020/10/28 18:43:13 by yaalaoui         ###   ########.fr       */
+>>>>>>> parent of b8c9fb9... this is before memory cleanage
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +81,7 @@ int		key_pressed(int key, t_mapdata *map)
 
 void	ft_movewasd(t_mapdata *map)
 {
+<<<<<<< HEAD
 	int x;
 	int y;
 	int x1;
@@ -101,6 +106,27 @@ void	ft_movewasd(t_mapdata *map)
 	if (x != '1' && x != '2' && x1 != '1' && x1 != '2')
 		PX = PX + (KEY_1 * cos(ANGLE) * 4) +
 			(KEY_2 * cos(RAD(ANGLE + 90)) * 2);
+=======
+	if ((MAP2D[(int)(PY + (KEY_1 * sin(ANGLE) * 8))
+		/ (g_tiles)][(int)PX / (g_tiles)] != '1') &&
+			MAP2D[(int)(PY + (KEY_1 * sin(ANGLE) * 8))
+				/ (g_tiles)][(int)PX / (g_tiles)] != '2')
+		if (MAP2D[(int)(PY + (KEY_2 * sin(ANGLE + RAD(90)) * 8)) / (g_tiles)]
+			[(int)PX / (g_tiles)] != '1' && MAP2D[(int)(PY + (KEY_2 * sin(ANGLE
+				+ RAD(90)) * 8)) / (g_tiles)][(int)PX / (g_tiles)] != '1' &&
+					((KEY_S2 == 1) || (KEY_S1 == 1)))
+			PY = PY + (KEY_1 * sin(ANGLE) * 8) + (KEY_2 *
+				sin(ANGLE + RAD(90)) * 8);
+	if ((MAP2D[(int)PY / (g_tiles)][(int)(PX + (KEY_1 * cos(ANGLE) * 8)) /
+		(g_tiles)] != '1') && (MAP2D[(int)PY / (g_tiles)][(int)(PX +
+			(KEY_1 * cos(ANGLE) * 8)) / (g_tiles)] != '2'))
+		if (MAP2D[(int)PY / (g_tiles)][(int)(PX + (KEY_2 * cos(ANGLE + RAD(90))
+			* 8)) / (g_tiles)] != '1' && MAP2D[(int)PY / (g_tiles)][(int)(PX +
+				(KEY_2 * cos(ANGLE + RAD(90)) * 8)) / (g_tiles)] != '2' &&
+					((KEY_S2 == 1) || (KEY_S1 == 1)))
+			PX = PX + (KEY_1 * cos(ANGLE) * 8) +
+				(KEY_2 * cos(ANGLE + RAD(90)) * 8);
+>>>>>>> parent of b8c9fb9... this is before memory cleanage
 }
 
 int		loop_me(t_mapdata *map)

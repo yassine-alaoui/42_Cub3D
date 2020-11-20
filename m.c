@@ -6,7 +6,7 @@
 /*   By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/12 20:02:34 by yaalaoui          #+#    #+#             */
-/*   Updated: 2020/11/18 13:13:11 by yaalaoui         ###   ########.fr       */
+/*   Updated: 2020/11/12 14:04:20 by yaalaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,5 +85,4 @@ int		main(int argc, char **argv)
 	(ft_checkex(argv[1])) ? 0 : ft_error("wrong extension");
 	ANGLE = sean(map);
 	mlx_stuff(map);
-	ft_lstclear(&g_mylist);
 }

@@ -6,7 +6,11 @@
 /*   By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 00:14:47 by yaalaoui          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2020/11/19 11:41:15 by yaalaoui         ###   ########.fr       */
+=======
+/*   Updated: 2020/10/28 13:05:33 by yaalaoui         ###   ########.fr       */
+>>>>>>> parent of b8c9fb9... this is before memory cleanage
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +58,6 @@ void	ft_init(t_mapdata *map)
 	map->mapcheck = 0;
 	MLX = 0;
 	MAP2D = 0;
-	MAP2DB = 0;
 	DATA = 0;
 	IMAGE = 0;
 	PY = 0;
@@ -87,11 +90,8 @@ void	ft_read(int fd, t_mapdata *map)
 			ft_error("not an empty line");
 		ft_small_check(line, map, notmap);
 		if (MCHECK == 8 && notmap == 0)
-		{
-			(PP < (int)ft_strlen(line)) ? PP = (int)ft_strlen(line) : PP;
 			if (helpread(line, map))
 				continue;
-		}
 		free(line);
 		if (ret == 0)
 			break ;
@@ -100,10 +100,8 @@ void	ft_read(int fd, t_mapdata *map)
 
 void	ft_matrix(t_mapdata *map, char *line)
 {
-	char		*box;
-	int			i;
+	char	*box;
 
-	i = 0;
 	box = ft_strdup(line);
 	if (!MAP0)
 		MAP0 = ft_strdup("");
