@@ -6,7 +6,7 @@
 /*   By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/23 14:34:09 by yaalaoui          #+#    #+#             */
-/*   Updated: 2020/11/20 11:27:37 by yaalaoui         ###   ########.fr       */
+/*   Updated: 2020/11/21 18:54:50 by yaalaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,16 @@ void	draw_sprite(t_mapdata *map, int id)
 	{
 		if (SPRITES[id].x_off + i <= 0 || SPRITES[id].x_off + i >= WH)
 			continue ;
-		if (RAYDIST[(int)(SPRITES[id].x_off + i)] <= SPRITES[id].dist)
+		if (RAYDIST[(int)(SPRITES[id].x_off + i)] < SPRITES[id].dist)
 			continue ;
 		j = -1;
 		while (++j < size - 1)
 		{
 			if (SPRITES[id].y_off + j <= 0 || SPRITES[id].y_off + j >= HT)
 				continue ;
-			c = SPRITES->sdata[(int)((g_tiles) *
+			c = map->sdata[(int)((g_tiles) *
 					(g_tiles * j / (int)size) + (g_tiles * i / (int)size))];
-			if (c != SPRITES->sdata[0])
+			if (c != map->sdata[0])
 				DATA[(int)((j + SPRITES[id].y_off) *
 				WH + (i + SPRITES[id].x_off))] = c;
 		}
@@ -44,29 +44,25 @@ void	draw_sprite(t_mapdata *map, int id)
 
 void	to_sort(t_mapdata *map)
 {
-	int			i;
-	int			j;
-	float		tmp_dist;
-	float		tmp_x;
-	float		tmp_y;
+	int				i;
+	int				j;
+	t_sprite		tmp;
 
-	i = -1;
-	while (++i < g_count)
+	i = 0;
+	while (i < g_count - 1)
 	{
-		j = -1;
-		while (++j < g_count - i)
+		j = i;
+		while (j < g_count - 1)
+		{
 			if (SPRITES[j].dist < SPRITES[j + 1].dist)
 			{
-				tmp_dist = SPRITES[j].dist;
-				tmp_x = SPRITES[j].x;
-				tmp_y = SPRITES[j].y;
-				SPRITES[j].dist = SPRITES[j + 1].dist;
-				SPRITES[j].x = SPRITES[j + 1].x;
-				SPRITES[j].y = SPRITES[j + 1].y;
-				SPRITES[j + 1].dist = tmp_dist;
-				SPRITES[j + 1].x = tmp_x;
-				SPRITES[j + 1].y = tmp_y;
+				tmp = SPRITES[j];
+				SPRITES[j] = SPRITES[j + 1];
+				SPRITES[j + 1] = tmp;
 			}
+			j++;
+		}
+		i++;
 	}
 }
 
@@ -78,6 +74,7 @@ void	to_sprite(t_mapdata *map, int m)
 	m = -1;
 	k = -1;
 	to_sort(map);
+	angle = 0;
 	while (++k < g_count)
 	{
 		SPRITES[k].dist = sqrtf(((SPRITES[k].x) - PX) * ((SPRITES[k].x) - PX)
@@ -103,12 +100,12 @@ void	init_spt(t_mapdata *map)
 
 	i = -1;
 	k = 0;
-	if (!(SPRITES = malloc(sizeof(t_sprite) * (g_count + 1))))
+	if (!(SPRITES = malloc(sizeof(t_sprite) * (g_count))))
 		ft_error("");
 	ft_lstadd_front(&g_mylist, ft_lstnew(SPRITES));
-	(SPRITES->simg = mlx_xpm_file_to_image(MLX, S, &SH, &SW)) ==
+	(map->simg = mlx_xpm_file_to_image(MLX, S, &SH, &SW)) ==
 		0 ? ft_error("wrong sprite extension") : 0;
-	SPRITES->sdata = (int *)mlx_get_data_addr(SPRITES->simg, &DT, &DT1, &DT1);
+	map->sdata = (int *)mlx_get_data_addr(map->simg, &DT, &DT1, &DT1);
 	while (MAP2D[++i] != 0 && (j = -1) && (k < g_count))
 		while (MAP2D[i][++j] != 0 && (k < g_count))
 			if (MAP2D[i][j] == '2')
