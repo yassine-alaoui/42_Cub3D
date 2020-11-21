@@ -6,13 +6,13 @@
 /*   By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 23:00:47 by yaalaoui          #+#    #+#             */
-/*   Updated: 2020/10/24 11:22:31 by yaalaoui         ###   ########.fr       */
+/*   Updated: 2020/11/21 20:39:59 by yaalaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib.h"
 
-void	ft_fetch(char *line, int *height, int *width, t_mapdata *map)
+void	ft_fetch(char *line, t_mapdata *map)
 {
 	static int	i = 0;
 	static int	cond1 = 1;
@@ -21,24 +21,22 @@ void	ft_fetch(char *line, int *height, int *width, t_mapdata *map)
 
 	while (line[i++] != '\0')
 	{
+		(ft_isalpha(line[i])) ? ft_error("there are some abnormal chars") : 0;
 		if (ft_isdigit(line[i]) && cond1 && (check += 1))
 		{
-			(*width = ft_atoi(line + i)) && (cond1 -= cond1);
-			i += ft_intlen(*width);
+			(WH = ft_atoi(line + i)) && (cond1 -= cond1);
+			i += ft_intlen(WH);
 		}
 		if (ft_isdigit(line[i]) && !cond1 && cond2 && (check += 1))
 		{
-			*height = ft_atoi(line + i);
-			i += ft_intlen(*height);
+			HT = ft_atoi(line + i);
+			i += ft_intlen(HT);
 		}
 		(ft_isdigit(line[i]) && !cond1 && !cond2) ? check++ : 0;
 	}
 	(!(line[1] == ' ')) ? ft_error("no space after R") : 0;
 	(check != 2) ? ft_error("wrong number of R params") : 0;
-	HT = (*height > 1440) ? 1440 : *height;
-	(*height < 100) ? ft_error("height too small") : 0;
-	WH = (*width > 2560) ? 2560 : *width;
-	(*width < 100) ? ft_error("width too small") : 0;
+	fix_res(map);
 }
 
 int		ft_intlen(int num)
@@ -63,14 +61,11 @@ int		ft_intlen(int num)
 
 void	ft_north(t_mapdata *map, char *line)
 {
-	static int	i = -1;
+	static int	i = 1;
 
 	while (line[++i])
 	{
-		if (line[i] == 'N' && line[i + 1] == 'O' &&
-			line[i + 2] != ' ')
-			ft_error("Something is wrong with the path NO");
-		if (line[i] == '.')
+		if (line[i] == '.' || ft_isalpha(line[i]))
 		{
 			NO = ft_substr(line, i, ft_strlen(line));
 			ft_lstadd_front(&g_mylist, ft_lstnew(NO));
@@ -82,14 +77,11 @@ void	ft_north(t_mapdata *map, char *line)
 
 void	ft_south(t_mapdata *map, char *line)
 {
-	static int i = -1;
+	static int i = 1;
 
 	while (line[++i])
 	{
-		if (line[i] == 'S' && line[i + 1] == 'O' &&
-			line[i + 2] != ' ')
-			ft_error("Something is wrong with the path SO");
-		if (line[i] == '.')
+		if (line[i] == '.' || ft_isalpha(line[i]))
 		{
 			SO = ft_substr(line, i, ft_strlen(line));
 			ft_lstadd_front(&g_mylist, ft_lstnew(SO));
@@ -101,14 +93,11 @@ void	ft_south(t_mapdata *map, char *line)
 
 void	ft_west(t_mapdata *map, char *line)
 {
-	static int i = -1;
+	static int i = 1;
 
 	while (line[++i])
 	{
-		if (line[i] == 'W' && line[i + 1] == 'E' &&
-			line[i + 2] != ' ')
-			ft_error("Something is wrong with the path WE");
-		if (line[i] == '.')
+		if (line[i] == '.' || ft_isalpha(line[i]))
 		{
 			WE = ft_substr(line, i, ft_strlen(line));
 			ft_lstadd_front(&g_mylist, ft_lstnew(WE));

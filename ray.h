@@ -6,7 +6,7 @@
 /*   By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 18:18:10 by yaalaoui          #+#    #+#             */
-/*   Updated: 2020/11/20 11:52:36 by yaalaoui         ###   ########.fr       */
+/*   Updated: 2020/11/21 14:18:28 by yaalaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,10 @@ typedef	struct	s_bmp_header
 # define HH it->hith
 # define HV it->hitv
 # define TXTNUM it->textnum
-# define SH map->sprites[k].height
-# define SW map->sprites[k].width
-# define DT map->sprites[k].ditch
-# define DT1 map->sprites[k].ditch1
+# define SH map->s_height
+# define SW map->s_width
+# define DT map->ditch
+# define DT1 map->ditch1
 
 int				g_count;
 void			init(t_horizontal *it);

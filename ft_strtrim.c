@@ -6,12 +6,19 @@
 /*   By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 11:43:47 by yaalaoui          #+#    #+#             */
-/*   Updated: 2020/10/24 12:53:45 by yaalaoui         ###   ########.fr       */
+/*   Updated: 2020/11/21 20:23:30 by yaalaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib.h"
 #include "ray.h"
+
+int			ft_isalpha(int c)
+{
+	if ((c >= 97 && c <= 122) || (c >= 65 && c <= 90))
+		return (1);
+	return (0);
+}
 
 static int	ft_back(const char *main, const char *trim)
 {

@@ -6,11 +6,23 @@
 /*   By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 21:49:18 by yaalaoui          #+#    #+#             */
-/*   Updated: 2020/11/18 11:44:07 by yaalaoui         ###   ########.fr       */
+/*   Updated: 2020/11/21 20:23:22 by yaalaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib.h"
+
+void		fix_res(t_mapdata *map)
+{
+	int	width;
+	int	height;
+
+	mlx_get_screen_size(MLX, &width, &height);
+	HT = (HT > height) ? height : HT;
+	(HT < 100) ? ft_error("height too small") : 0;
+	WH = (WH > width) ? width : WH;
+	(WH < 100) ? ft_error("width too small") : 0;
+}
 
 int			count_words(const char *str, char c)
 {

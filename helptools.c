@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hexandsome.c                                       :+:      :+:    :+:   */
+/*   helptools.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/10 15:51:47 by yaalaoui          #+#    #+#             */
-/*   Updated: 2020/10/26 19:37:58 by yaalaoui         ###   ########.fr       */
+/*   Updated: 2020/11/21 20:35:49 by yaalaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,14 @@
 void	ft_small_check(char *line, t_mapdata *map, int notmap)
 {
 	if (line[0] == 'R' && line[1] == ' ' && (MCHECK++ || 1))
-		ft_fetch(line, &HT, &WH, map);
-	else if (line[0] == 'N' && line[1] == 'O')
+		ft_fetch(line, map);
+	else if (line[0] == 'N' && line[1] == 'O' && line[2] == ' ')
 		ft_north(map, line);
-	else if (line[0] == 'S' && line[1] == 'O')
+	else if (line[0] == 'S' && line[1] == 'O' && line[2] == ' ')
 		ft_south(map, line);
-	else if (line[0] == 'W' && line[1] == 'E')
+	else if (line[0] == 'W' && line[1] == 'E' && line[2] == ' ')
 		ft_west(map, line);
-	else if (line[0] == 'E' && line[1] == 'A')
+	else if (line[0] == 'E' && line[1] == 'A' && line[2] == ' ')
 		ft_east(map, line);
 	else if (line[0] == 'S' && line[1] == ' ')
 		ft_sprite(map, line);

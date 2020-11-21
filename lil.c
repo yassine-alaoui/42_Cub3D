@@ -6,7 +6,7 @@
 /*   By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 20:04:30 by yaalaoui          #+#    #+#             */
-/*   Updated: 2020/03/04 20:25:54 by yaalaoui         ###   ########.fr       */
+/*   Updated: 2020/11/21 14:25:12 by yaalaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,13 @@ int		ft_isdigit(int c)
 
 void	ft_error(char *s)
 {
-	int i;
+	int		i;
+	char	*e;
 
 	i = -1;
 	ft_lstclear(&g_mylist);
-	write(1, "E", 1);
-	write(1, "r", 1);
-	write(1, "r", 1);
-	write(1, "o", 1);
-	write(1, "r", 1);
-	write(1, "\n", 1);
+	e = "\033[1;31m Error\n >> \033[0;31m";
+	write(1, e, ft_strlen(e));
 	while (s[++i] != '\0')
 		write(1, s + i, 1);
 	write(1, "\n", 2);

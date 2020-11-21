@@ -6,14 +6,14 @@
 /*   By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 16:26:44 by yaalaoui          #+#    #+#             */
-/*   Updated: 2020/10/28 12:34:52 by yaalaoui         ###   ########.fr       */
+/*   Updated: 2020/11/21 11:14:16 by yaalaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib.h"
 #include "ray.h"
 
-static void	ft_drawceeling(int wall, t_mapdata *map, int b)
+static void	ft_drawceeling(double wall, t_mapdata *map, int b)
 {
 	int			i;
 	int			j;
@@ -28,7 +28,7 @@ static void	ft_drawceeling(int wall, t_mapdata *map, int b)
 	}
 }
 
-static void	ft_drawfloor(int wall, t_mapdata *map, int b)
+static void	ft_drawfloor(double wall, t_mapdata *map, int b)
 {
 	int			i;
 	int			j;
@@ -43,14 +43,14 @@ static void	ft_drawfloor(int wall, t_mapdata *map, int b)
 	}
 }
 
-static void	ft_drawwall(int wall, t_mapdata *map,
+static void	ft_drawwall(double wall, t_mapdata *map,
 	t_horizontal *it, int b)
 {
-	float	i;
-	float	toppix;
-	float	botpix;
-	float	offsetx;
-	float	offsety;
+	double	i;
+	double	toppix;
+	double	botpix;
+	double	offsetx;
+	double	offsety;
 
 	if (HV)
 		offsetx = (int)WALLY % g_tiles;
@@ -64,7 +64,7 @@ static void	ft_drawwall(int wall, t_mapdata *map,
 	picktxt(it);
 	while (i < botpix)
 	{
-		offsety = (i + (wall - HT) / 2) * ((float)g_tiles / wall);
+		offsety = (i + (wall - HT) / 2) * ((double)g_tiles / wall);
 		if (i >= 0 && i < HT && b >= 0 && b < WH)
 			DATA[(int)i * WH + b] = TXTDATA[TXTNUM][(int)offsetx
 				+ (g_tiles * (int)offsety)];
@@ -75,9 +75,9 @@ static void	ft_drawwall(int wall, t_mapdata *map,
 static void	render_wall(t_mapdata *map, double stripheight,
 	int b, t_horizontal *it)
 {
-	int	wall;
+	double	wall;
 
-	wall = (int)stripheight;
+	wall = stripheight;
 	ft_drawwall(wall, map, it, b);
 	ft_drawceeling(wall, map, b);
 	ft_drawfloor(wall, map, b);

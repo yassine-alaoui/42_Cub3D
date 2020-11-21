@@ -6,7 +6,7 @@
 /*   By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 00:32:04 by yaalaoui          #+#    #+#             */
-/*   Updated: 2020/11/20 11:50:37 by yaalaoui         ###   ########.fr       */
+/*   Updated: 2020/11/21 20:23:51 by yaalaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,12 +55,6 @@ typedef struct	s_prite
 	float	y_off;
 	float	dist;
 	float	size;
-	int		width;
-	int		height;
-	int		*sdata;
-	int		ditch;
-	int		ditch1;
-	void	*simg;
 }				t_sprite;
 
 typedef struct	s_list
@@ -88,8 +82,14 @@ typedef struct	s_list
 	int				down;
 	int				right;
 	int				left;
-	int				*raydist;
+	int				*texturedata[4];
 	int				screen;
+	int				s_width;
+	int				s_height;
+	int				*sdata;
+	int				ditch;
+	int				ditch1;
+	double			*raydist;
 	float			playerx;
 	float			playery;
 	float			wdis;
@@ -99,6 +99,8 @@ typedef struct	s_list
 	float			angle;
 	void			*mlximage;
 	void			*mlx;
+	void			*textureimage;
+	void			*simg;
 	char			*maponestr;
 	char			hexfloor[8];
 	char			hexceeling[8];
@@ -111,8 +113,6 @@ typedef struct	s_list
 	char			**map2dbefore;
 	t_sprite		*sprites;
 	t_horizontal	*it;
-	int				*texturedata[4];
-	void			*textureimage;
 }				t_mapdata;
 
 typedef struct	s_lst
@@ -190,7 +190,7 @@ void			ft_sprite(t_mapdata *map, char *line);
 void			skipspace(char **line);
 void			ft_floor(t_mapdata *map, char *line);
 void			ft_ceeling(t_mapdata *map, char *line);
-void			ft_fetch(char *line, int *height, int *width, t_mapdata *map);
+void			ft_fetch(char *line, t_mapdata *map);
 void			ft_drawasquare(int a, int b, t_mapdata *map);
 void			ft_lstadd_front(t_list **alst, t_list *new);
 void			ft_lstclear(t_list **lst);
@@ -205,9 +205,11 @@ void			ft_chexa(int nb, t_mapdata *map);
 void			to_sprite(t_mapdata *map, int m);
 void			hex(int hex);
 void			ft_small_check(char *line, t_mapdata *map, int notmap);
+void			fix_res(t_mapdata *map);
 void			*g_mlx_win;
 int				ft_strncmp(const char *s1, const char *s2, size_t n);
 int				loop_me(t_mapdata *map);
+int				ft_isalpha(int c);
 int				ft_fill(char **last, int fd);
 int				get_next_line(int fd, char **line);
 int				ft_intlen(int i);
@@ -219,6 +221,7 @@ int				ft_isdigit(int c);
 int				helpread(char *line, t_mapdata *map);
 int				count_words(const char *str, char c);
 int				ft_iswall(t_mapdata *map);
+int				mlx_get_screen_size(void *mlx_ptr, int *sizex, int *sizey);
 int				g_tiles;
 int				g_rows;
 size_t			ft_strlen(const char *s);

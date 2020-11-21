@@ -6,7 +6,7 @@
 /*   By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 00:14:47 by yaalaoui          #+#    #+#             */
-/*   Updated: 2020/11/20 11:44:01 by yaalaoui         ###   ########.fr       */
+/*   Updated: 2020/11/21 14:43:10 by yaalaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,11 +113,13 @@ void	ft_matrix(t_mapdata *map, char *line)
 
 void	ft_helpdrawasquare(t_mapdata *map)
 {
-	int *tmp;
+	static int tmp = 0;
 
-	tmp = 0;
-	tmp = RAYDIST;
-	RAYDIST = malloc(sizeof(int *) * WH);
-	free(tmp);
+	if (tmp == 0)
+	{
+		RAYDIST = malloc(sizeof(int *) * WH);
+		ft_lstadd_front(&g_mylist, ft_lstnew(RAYDIST));
+		tmp = 1;
+	}
 	ft_drawaplayer(map);
 }

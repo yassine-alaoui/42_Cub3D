@@ -6,7 +6,7 @@
 /*   By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/12 15:29:30 by yaalaoui          #+#    #+#             */
-/*   Updated: 2020/11/19 12:10:58 by yaalaoui         ###   ########.fr       */
+/*   Updated: 2020/11/21 20:40:56 by yaalaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,10 @@
 
 void	ft_east(t_mapdata *map, char *line)
 {
-	static int i = -1;
+	static int i = 1;
 
 	while (line[++i])
 	{
-		if (line[i] == 'E' && line[i + 1] == 'A' &&
-			line[i + 2] != ' ')
-			ft_error("Something is wrong with the path EA");
 		if (line[i] == '.')
 		{
 			EA = ft_substr(line, i, ft_strlen(line));
@@ -33,13 +30,11 @@ void	ft_east(t_mapdata *map, char *line)
 
 void	ft_sprite(t_mapdata *map, char *line)
 {
-	static int i = -1;
+	static int i = 1;
 
 	while (line[++i])
 	{
-		if (line[i] == 'S' && line[i + 1] != ' ')
-			ft_error("Something is wrong with the path S");
-		if (line[i] == '.')
+		if (line[i] == '.' || ft_isalpha(line[i]))
 		{
 			S = ft_substr(line, i, ft_strlen(line));
 			ft_lstadd_front(&g_mylist, ft_lstnew(S));
