@@ -6,7 +6,7 @@
 /*   By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/23 14:34:09 by yaalaoui          #+#    #+#             */
-/*   Updated: 2020/11/21 18:54:50 by yaalaoui         ###   ########.fr       */
+/*   Updated: 2020/11/26 14:11:49 by yaalaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,14 @@ void	draw_sprite(t_mapdata *map, int id)
 	size = SPRITES[id].size;
 	while (++i < size - 1)
 	{
-		if (SPRITES[id].x_off + i <= 0 || SPRITES[id].x_off + i >= WH)
+		if (SPRITES[id].x_off + i <= 0 || SPRITES[id].x_off + i > WH - 1)
 			continue ;
-		if (RAYDIST[(int)(SPRITES[id].x_off + i)] < SPRITES[id].dist)
+		if (RAYDIST[(int)(SPRITES[id].x_off + i)] <= SPRITES[id].dist)
 			continue ;
 		j = -1;
 		while (++j < size - 1)
 		{
-			if (SPRITES[id].y_off + j <= 0 || SPRITES[id].y_off + j >= HT)
+			if (SPRITES[id].y_off + j <= 0 || SPRITES[id].y_off + j > HT - 1)
 				continue ;
 			c = map->sdata[(int)((g_tiles) *
 					(g_tiles * j / (int)size) + (g_tiles * i / (int)size))];
@@ -100,7 +100,7 @@ void	init_spt(t_mapdata *map)
 
 	i = -1;
 	k = 0;
-	if (!(SPRITES = malloc(sizeof(t_sprite) * (g_count))))
+	if (!(SPRITES = malloc(sizeof(t_sprite) * (g_count + 1))))
 		ft_error("");
 	ft_lstadd_front(&g_mylist, ft_lstnew(SPRITES));
 	(map->simg = mlx_xpm_file_to_image(MLX, S, &SH, &SW)) ==

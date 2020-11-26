@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/23 03:54:40 by yaalaoui          #+#    #+#             */
-/*   Updated: 2020/11/21 18:05:05 by yaalaoui         ###   ########.fr       */
+/*   Created: 0010/02/23 03:54:40 by yaalaoui          #+#    #+#             */
+/*   Updated: 2020/11/26 14:14:34 by yaalaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,19 +77,19 @@ int		key_pressed(int key, t_mapdata *map)
 
 void	ft_movewasd(t_mapdata *map)
 {
-	int x;
-	int y;
-	int x1;
-	int y1;
-	int t;
+	float	x;
+	float	y;
+	float	x1;
+	float	y1;
+	int		t;
 
 	t = g_tiles;
-	y = MAP2D[(int)(PY + (KEY_1 * sin(ANGLE) * 8)) / (t)][(int)PX / (t)];
-	y1 = MAP2D[(int)(PY + (KEY_2 * sin(RAD(ANGLE + 90)) * 8))
+	y = MAP2D[(int)(PY + (KEY_1 * sin(ANGLE) * 10)) / (t)][(int)PX / (t)];
+	y1 = MAP2D[(int)(PY + (KEY_2 * sin(RAD(ANGLE + 90)) * 10))
 	/ (t)][(int)PX / (t)];
-	x = MAP2D[(int)PY / (t)][(int)(PX + (KEY_1 * cos(ANGLE) * 8)) / (t)];
+	x = MAP2D[(int)PY / (t)][(int)(PX + (KEY_1 * cos(ANGLE) * 10)) / (t)];
 	x1 = MAP2D[(int)PY / (t)][(int)(PX + (KEY_2
-	* cos(RAD(ANGLE + 90)) * 8)) / (t)];
+	* cos(RAD(ANGLE + 90)) * 10)) / (t)];
 	ANGLE = fmod(ANGLE, 2 * M_PI);
 	if (ANGLE < 0)
 		ANGLE += 2 * M_PI;
