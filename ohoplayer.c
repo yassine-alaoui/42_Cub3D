@@ -6,7 +6,7 @@
 /*   By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 0010/02/23 03:54:40 by yaalaoui          #+#    #+#             */
-/*   Updated: 2020/11/26 14:14:34 by yaalaoui         ###   ########.fr       */
+/*   Updated: 2020/11/30 12:56:00 by yaalaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,15 @@ int		ft_quit(void)
 
 int		key_released(int key, t_mapdata *map)
 {
-	if (key == LEFT || key == RIGHT)
-		KEY_S0 = 0;
-	if (key == DOWN || key == UP)
-		KEY_S1 = 0;
-	if (key == WLEFT || key == WRIGHT)
-		KEY_S2 = 0;
+	if (key == 259)
+	{
+		KEY_0 = 0;
+		KEY_1 = 0;
+		KEY_2 = 0;
+	}
+	(key == LEFT || key == RIGHT) ? KEY_S0 = 0 : 0;
+	(key == DOWN || key == UP) ? KEY_S1 = 0 : 0;
+	(key == WLEFT || key == WRIGHT) ? KEY_S2 = 0 : 0;
 	if (key == WLEFT || key == WRIGHT)
 	{
 		if (key == WLEFT)
@@ -41,8 +44,7 @@ int		key_released(int key, t_mapdata *map)
 		if (key == UP)
 			KEY_1 = 0;
 	}
-	if (key == 53)
-		ft_error("game over");
+	(key == 53) ? ft_error("game over") : 0;
 	return (0);
 }
 
