@@ -6,7 +6,7 @@
 /*   By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 18:18:10 by yaalaoui          #+#    #+#             */
-/*   Updated: 2020/11/21 14:18:28 by yaalaoui         ###   ########.fr       */
+/*   Updated: 2020/11/30 20:02:05 by yaalaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,5 +73,6 @@ void			texture(t_mapdata *map);
 double			ft_horizontal(t_mapdata *map, t_horizontal *it);
 double			ft_vertical(t_mapdata *map, t_horizontal *it);
 double			colmdist(t_mapdata *map, t_horizontal *it);
+t_horizontal	*it;
 
 #endif

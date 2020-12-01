@@ -6,7 +6,7 @@
 /*   By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:32:53 by yaalaoui          #+#    #+#             */
-/*   Updated: 2020/11/20 14:33:14 by yaalaoui         ###   ########.fr       */
+/*   Updated: 2020/12/01 20:27:39 by yaalaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,15 +50,8 @@ void	ft_drawasquare(int a, int b, t_mapdata *map)
 void	ft_drawaplayer(t_mapdata *map)
 {
 	int				i;
-	t_horizontal	*it;
-	t_horizontal	*tmp;
 
-	it = 0;
-	tmp = it;
-	it = malloc(sizeof(t_horizontal));
-	init(it);
 	i = 0;
-	ft_lstadd_front(&g_mylist, ft_lstnew(it));
 	ARC = ANGLE - (M_PI / 6);
 	while (i < WH)
 	{
@@ -71,6 +64,5 @@ void	ft_drawaplayer(t_mapdata *map)
 		ARC += (M_PI / 3) / WH;
 		i++;
 	}
-	free(tmp);
 	to_sprite(map, -1);
 }

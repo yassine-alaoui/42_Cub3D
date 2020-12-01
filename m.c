@@ -6,7 +6,7 @@
 /*   By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/12 20:02:34 by yaalaoui          #+#    #+#             */
-/*   Updated: 2020/11/21 19:02:30 by yaalaoui         ###   ########.fr       */
+/*   Updated: 2020/11/30 20:32:19 by yaalaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ void	mlx_stuff(t_mapdata *map)
 	static int c = 0;
 
 	g_mlx_win = mlx_new_window(MLX, WH, HT, "CUB3D");
-	IMAGE = mlx_new_image(MLX, WH, HT);
-	DATA = (int *)mlx_get_data_addr(IMAGE, &SIZELINE, &ENDIAN, &ENDIAN);
 	if (c == 0)
 	{
+		IMAGE = mlx_new_image(MLX, WH, HT);
+		DATA = (int *)mlx_get_data_addr(IMAGE, &SIZELINE, &ENDIAN, &ENDIAN);
 		init_spt(map);
 		c = 1;
 	}
@@ -57,6 +57,9 @@ int		ft_checkex(char *s)
 	int i;
 
 	i = 0;
+	it = malloc(sizeof(t_horizontal));
+	ft_lstadd_front(&g_mylist, ft_lstnew(it));
+	init(it);
 	end = ft_strlen(s) - 1;
 	if (s[end] == 'b' && s[end - 1] == 'u'
 		&& s[end - 2] == 'c' && s[end - 3] == '.')
