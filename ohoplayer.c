@@ -6,7 +6,7 @@
 /*   By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 0010/02/23 03:54:40 by yaalaoui          #+#    #+#             */
-/*   Updated: 2020/11/30 12:56:00 by yaalaoui         ###   ########.fr       */
+/*   Updated: 2020/12/04 11:15:38 by yaalaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,8 +95,6 @@ void	ft_movewasd(t_mapdata *map)
 	ANGLE = fmod(ANGLE, 2 * M_PI);
 	if (ANGLE < 0)
 		ANGLE += 2 * M_PI;
-	if (KEY_S0)
-		ANGLE = ANGLE + (KEY_0 * 0.025);
 	if (y != '1' && y != '2' && y1 != '1' && y1 != '2')
 		PY = PY + (KEY_1 * sin(ANGLE) * 4) +
 			(KEY_2 * sin(RAD(ANGLE + 90)) * 2);

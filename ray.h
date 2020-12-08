@@ -6,7 +6,7 @@
 /*   By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 18:18:10 by yaalaoui          #+#    #+#             */
-/*   Updated: 2020/11/30 20:02:05 by yaalaoui         ###   ########.fr       */
+/*   Updated: 2020/12/04 11:21:14 by yaalaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ typedef	struct	s_bmp_header
 # define DT1 map->ditch1
 
 int				g_count;
-void			init(t_horizontal *it);
+void			init(t_horizontal *it, t_mapdata *map);
 void			ft_facewhere(t_horizontal *it);
 void			generete_wall(t_mapdata *map, t_horizontal *it,
 	int b, double theone);
@@ -73,6 +73,5 @@ void			texture(t_mapdata *map);
 double			ft_horizontal(t_mapdata *map, t_horizontal *it);
 double			ft_vertical(t_mapdata *map, t_horizontal *it);
 double			colmdist(t_mapdata *map, t_horizontal *it);
-t_horizontal	*it;
 
 #endif

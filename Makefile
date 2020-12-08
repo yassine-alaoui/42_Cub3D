@@ -6,7 +6,7 @@
 #    By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/14 18:43:39 by yaalaoui          #+#    #+#              #
-#    Updated: 2020/12/01 20:28:27 by yaalaoui         ###   ########.fr        #
+#    Updated: 2020/11/26 12:05:00 by yaalaoui         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,6 @@ bonus:
 	@gcc -Wall -Werror -Wextra -c $(SRC) $(BONUS)
 	@ar -rc  lib.a $(SRC:.c=.o)
 	@ranlib lib.a
-	@gcc -Wall -Werror -Wextra -I /usr/local/include lib.a -L /usr/local/lib/ -lmlx -framework OpenGL -framework AppKit -o cub3D libmlx.dylib
 
 clean:
 	@rm -f $(SRC:.c=.o) $(BONUS:.c=.o) cub3D
