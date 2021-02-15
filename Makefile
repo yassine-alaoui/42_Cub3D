@@ -6,7 +6,7 @@
 #    By: yaalaoui <yaalaoui@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/14 18:43:39 by yaalaoui          #+#    #+#              #
-#    Updated: 2020/11/26 12:05:00 by yaalaoui         ###   ########.fr        #
+#    Updated: 2021/02/15 14:46:57 by yaalaoui         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ NAME = lib.a
 
 all:	$(NAME)
 
-$(NAME) :
+$(NAME) : $(SRC:.c=.o)
 	@gcc -Wall -Werror -Wextra -c $(SRC)
 	@ar -rc  lib.a $(SRC:.c=.o)
 	@ranlib lib.a
